@@ -1,4 +1,4 @@
-# 在Linux上使用PM2部署Dotnet应用
+# 在Linux上使用PM2守护Dotnet应用
 
 
 ## pm2简介

@@ -4,8 +4,29 @@
 
 文档地址:https://www.donet5.com/Home/Doc
 
-## 注入
+## 简单实用
 
+### 安装
+
+ > <PackageReference Include="SqlSugarCore" Version="5.1.4.128" />
+
+然后再在builder.Services中注入SqlsugarSetup。
+
+使用的地方,先注入ISqlSugarClient，就按照文档方式直接实用就可以了
+
+```
+public class MiniServiceController : ControllerBase
+{
+    private readonly ISqlSugarClient _db;
+
+    public MiniServiceController(ISqlSugarClient db)
+    {
+        _db = db;
+    }
+}
+```
+
+## SqlsugarSetup
 ```
 public static class SqlsugarSetup
 {

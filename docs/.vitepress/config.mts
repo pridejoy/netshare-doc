@@ -3,12 +3,43 @@ import { defineConfig, type DefaultTheme } from 'vitepress';
 export default defineConfig({
     title: 'NetShare',
     description: 'A VitePress Site',
+    head: [
+        // 站点图标
+        ['link', { rel: 'icon', href: '/icon/favicon.ico' }],
+        // SEO
+        [
+            'meta',
+            {
+                name: 'keywords',
+                content:
+                    '迷恋的知识库, netshare, Dotnet, Net, Net7, 迷恋自留地, 今晚打老虎, NetShare, Net分享, Net开源项目, Dotnet面试知识库',
+            },
+        ],
+        // 百度统计
+        [
+            'script',
+            {},
+            `
+          var _hmt = _hmt || [];
+          (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?cc5a66c545a0dc6ac6f0b83090e2b806";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+          })();
+        `,
+        ],
+    ],
     lastUpdated: true,
     sitemap: {
         hostname: 'http://localhost:5173/',
     },
+    markdown: {
+        lineNumbers: true,
+    },
     themeConfig: {
         logo: '/icon/logo.png',
+
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             { text: '首页', link: '/' },
@@ -30,6 +61,7 @@ export default defineConfig({
                     text: '指南',
                     // collapsed: false,
                     items: [
+                        { text: '前言', link: '/guid/easy-use' },
                         { text: '数据校验', link: '/guid/datavalidation' },
                         {
                             text: '配置与选项',
@@ -82,18 +114,14 @@ export default defineConfig({
                             collapsed: true,
                             items: [
                                 { text: 'Docker部署', link: '/docker-deployment' },
+                                { text: 'Linux用PM2守护Dotnet', link: '/linux-pm2-deployment' },
                                 {
-                                    text: 'Linux上使用PM2',
-                                    link: '/linux-pm2-deployment',
-                                },
-                                {
-                                    text: 'Linux上使用Systemd',
+                                    text: 'Linux用Systemd守护Dotnet',
                                     link: '/linux-systemd-deployment',
                                 },
                                 { text: 'IIS部署', link: '/win-iis-deployment' },
                             ],
                         },
-                        { text: '简单使用', link: '/guid/easy-use' },
                     ],
                 },
             ],

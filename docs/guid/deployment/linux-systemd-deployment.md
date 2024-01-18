@@ -1,5 +1,5 @@
 
-# 在Linux上使用Systemd部署Dotnet应用
+# 在Linux上使用Systemd守护Dotnet应用
 
 
 Systemd Service 的方式，用于在 Linux 系统上管理和运行服务。Systemd 是一个系统和服务管理器，可以自动化和简化 Linux 系统的管理和维护，包括启动、停止和管理后台服务。Systemd Service 是一种用于描述和配置服务的文件格式，通常使用 .service 扩展名，它可以告诉 Systemd 如何启动、停止、重启和管理服务。
