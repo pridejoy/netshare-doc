@@ -14,10 +14,7 @@
 需要注意的是，跨域问题只存在于浏览器环境中，对于服务器端来说不存在跨域问题。
 
 
-有三种方法可以启用 CORS： 
-- 在使用命名策略或默认策略的中间件中。
-- 使用终结点路由。
-- 使用 [EnableCors] 属性。
+ 
 
 官方文档: https://learn.microsoft.com/zh-cn/aspnet/core/security/cors
 
@@ -53,3 +50,17 @@ app.MapControllers();
 
 app.Run();
 ```
+
+## 具有命名策略和中间件的 CORS
+
+
+
+通常，在 UseCors 之前调用 UseStaticFiles。 使用 JavaScript 跨站点检索静态文件的应用必须在 UseStaticFiles 之前调用 UseCors。
+
+## 使用属性启用 CORS
+
+将不同的策略应用于具有 [EnableCors] 属性的控制器、页面模型或操作方法。 如果将 [EnableCors] 属性应用于控制器、页面模型或操作方法，并且在中间件中启用了 CORS，则会应用两种策略。 建议不要合并策略。 使用 [EnableCors]属性或中间件，两者不能位于同一应用中。
+
+
+
+[DisableCors] 属性不会**禁用终结点路由**已启用的 CORS。

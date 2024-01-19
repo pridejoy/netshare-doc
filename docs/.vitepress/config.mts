@@ -1,4 +1,5 @@
 import { defineConfig, type DefaultTheme } from 'vitepress';
+import sidebar from './sidebar';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: 'NetShare',
@@ -15,6 +16,20 @@ export default defineConfig({
                     '迷恋的知识库, netshare, Dotnet, Net, Net7, 迷恋自留地, 今晚打老虎, NetShare, Net分享, Net开源项目, Dotnet面试知识库',
             },
         ],
+        // webfont
+        ['link', { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' }],
+        ['link', { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' }],
+        [
+            'link',
+            { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.googleapis.com' },
+        ],
+        [
+            'link',
+            { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.gstatic.com' },
+        ],
+        // og
+        ['meta', { property: 'og:url', content: 'https://www.dotnetshare.com/' }],
+        ['meta', { property: 'og:locale', content: 'zh_CN' }],
         // 百度统计
         [
             'script',
@@ -32,7 +47,7 @@ export default defineConfig({
     ],
     lastUpdated: true,
     sitemap: {
-        hostname: 'http://localhost:5173/',
+        hostname: 'https://www.dotnetshare.com/',
     },
     markdown: {
         lineNumbers: true,
@@ -54,97 +69,7 @@ export default defineConfig({
                 link: '/article/',
             },
         ],
-        sidebar: {
-            // 当用户位于 `guide` 目录时，会显示此侧边栏
-            '/guid/': [
-                {
-                    text: '指南',
-                    // collapsed: false,
-                    items: [
-                        { text: '前言', link: '/guid/easy-use' },
-                        { text: '数据校验', link: '/guid/datavalidation' },
-                        {
-                            text: '配置与选项',
-                            base: '/guid/conf-options',
-                            collapsed: true,
-                            items: [
-                                { text: '配置', link: '/configuration' },
-                                { text: '选项', link: '/options' },
-                            ],
-                        },
-                        { text: '跨域', link: '/guid/cors' },
-                        { text: 'Swagger', link: '/guid/swagger' },
-                        { text: 'SqlSugar', link: '/guid/sqlsugar' },
-                        { text: '对象关系映射', link: '/guid/mapper' },
-                        { text: '异常处理', link: '/guid/exception-handling' },
-                        { text: '依赖注入/控制反转', link: '/guid/dependency-injection' },
-                        { text: '缓存', link: '/guid/cache' },
-                        { text: '安全鉴权', link: '/guid/auth' },
-                        { text: '日志', link: '/guid/auth' },
-                        {
-                            text: '中间件',
-                            base: '/guid/conf-options',
-                            collapsed: true,
-                            items: [
-                                { text: '过滤器', link: '/configuration' },
-                                { text: '自定义中间件', link: '/options' },
-                            ],
-                        },
-                        { text: '实时应用', link: '/guid/signalr' },
-                        {
-                            text: '后台服务',
-                            base: '/guid/service',
-                            collapsed: true,
-                            items: [
-                                { text: 'IHostedService', link: '/background-service' },
-                                {
-                                    text: '安装服务',
-                                    base: '/install',
-                                    collapsed: true,
-                                    items: [
-                                        { text: 'Topshelf ', link: '/topshelf' },
-                                        { text: '安装服务', base: '/install' },
-                                    ],
-                                },
-                            ],
-                        },
-                        {
-                            text: '部署',
-                            base: '/guid/deployment',
-                            collapsed: true,
-                            items: [
-                                { text: 'Docker部署', link: '/docker-deployment' },
-                                { text: 'Linux用PM2守护Dotnet', link: '/linux-pm2-deployment' },
-                                {
-                                    text: 'Linux用Systemd守护Dotnet',
-                                    link: '/linux-systemd-deployment',
-                                },
-                                { text: 'IIS部署', link: '/win-iis-deployment' },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            '/command/': [
-                {
-                    text: '命令',
-                    items: [
-                        { text: 'Docker', link: '/command/docker' },
-                        { text: 'Nginx', link: '/command/nginx' },
-                        { text: 'Pm2', link: '/command/pm2' },
-                        { text: 'Redis', link: '/command/redis' },
-                        { text: 'Sqlserver', link: '/command/sqlserver' },
-                    ],
-                },
-            ],
-            '/netopensource/': [
-                {
-                    text: '开源',
-                    collapsed: false,
-                    items: [{ text: '开源库', link: '/netopensource/library' }],
-                },
-            ],
-        },
+        sidebar,
         // socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
         footer: {
             message: '基于 MIT 许可发布',
@@ -157,11 +82,9 @@ export default defineConfig({
             prev: '上一页',
             next: '下一页',
         },
-
         outline: {
             label: '页面导航',
         },
-
         lastUpdated: {
             text: '最后更新于',
             formatOptions: {

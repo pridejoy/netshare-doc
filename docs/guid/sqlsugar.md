@@ -4,7 +4,7 @@
 
 文档地址:https://www.donet5.com/Home/Doc
 
-## 简单实用
+## 简单使用
 
 ### 安装
 

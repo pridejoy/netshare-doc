@@ -2,8 +2,9 @@
 
 在这里推荐Mapster，**Mapster**性能优于 AutoMapper，上手简单方便，更多的学习见章尾
 
+## 简单使用
 
-## 安装
+### 安装
 
 PM> dotnet add package Mapster
 
@@ -15,7 +16,7 @@ PM> dotnet add package Mapster
 </ItemGroup>
 ```
 
-## 定义实体
+### 定义实体
 ```
 public class User
 {
@@ -36,7 +37,7 @@ public class UserDto
 ```
 
 
-## 简单的使用
+
 
 ```
 /*
@@ -50,6 +51,8 @@ user.Adapt(dto);//在目标对象的基础上进行映射
 //注意：Adapt扩展方法使用的配置为 `TypeAdapterConfig.GlobalSettings`
 
 ```
+到这里已经可以使用最简单的映射了，但是，如果需要配置映射规则，需要在`TypeAdapterConfig.GlobalSettings`中配置
+更多配置，可以参考以下链接
 
 ## 在线学习Mapster
 
