@@ -1,4 +1,9 @@
+## 官方文档
 
+https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
+
+
+https://learn.microsoft.com/zh-cn/dotnet/core/extensions/configuration
 
 ## 配置
 
@@ -58,9 +63,30 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 多节点使用 `_configuration["Position:Title"]` 来获取配置Position:Title的值。
 
-## 文档
+```ts {6,8,11,17-20}
+    [ApiController]
+    [Route("[controller]/[action]")]
+    public class WeatherForecastController : ControllerBase
+    {  
+        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IConfiguration _configuration;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
+            IConfiguration configuration)
+        {
+            _logger = logger;
+            _configuration = configuration;
+        }
+          
+        [HttpGet("GetWeatherForecast")]
+        public string GetSetting()
+        { 
+            var myKeyValue = _configuration["MyKey"];
+            var title = _configuration["Position:Title"];
+            var name = _configuration["Position:Name"];
+            var defaultLogLevel = _configuration["Logging:LogLevel:Default"];
+            return name;
+        }
+    }
+```
 
-https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
 
-
-https://learn.microsoft.com/zh-cn/dotnet/core/extensions/configuration

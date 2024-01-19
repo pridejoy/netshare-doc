@@ -1,8 +1,42 @@
 # 选项
 
 选项（Options）是一个类，用于封装应用程序的配置信息。通过定义选项类，你可以将相关配置项组织在一起，并在需要时轻松地注入到应用程序的其他组件中。
-## 使用
 
+## 简单使用
+ 
+
+配置项添加一下节点
+```js
+"Position": {
+    "Title": "Editor",
+    "Name": "Joe Smith"
+  }
+```
+创建以下 PositionOptions 类：
+```
+public class PositionOptions
+{
+    public const string Position = "Position";
+    public string Title { get; set; } = String.Empty;
+    public string Name { get; set; } = String.Empty;
+}
+```
+
+进行强类型绑定
+```
+var positionOptions = new PositionOptions();
+Configuration.GetSection(PositionOptions.Position).Bind(positionOptions);
+
+return Content($"Title: {positionOptions.Title} \n" + $"Name: {positionOptions.Name}");
+```
+
+## WebApi中使用
+
+
+
+
+
+## 项目中的使用
 依赖注入容器中注册服务
 ```
 // 添加静态文件读取
