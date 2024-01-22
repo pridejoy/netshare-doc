@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "在线知识库"
-  text: "DotNET技术分享"
+  text: "DotNETShare"
   tagline: 一个会持续分享编程干货和好玩的知识库
   actions:
     - theme: brand
