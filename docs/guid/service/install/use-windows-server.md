@@ -1,7 +1,8 @@
 # 微软服务
 
-为什么说是微软服务，下面的方式是微软自家的安装服务功能支持Windows服务和Linux服务
+下面的方式是微软自家的安装服务功能支持Windows服务和Linux服务
 
+ 
 
 ### 安装
  
@@ -15,6 +16,9 @@
 请安装` Microsoft.Extensions.Hosting.Systemd` Nuget包
 
  
+修改 Program.cs 文件，添加 UseWindowsService() 方法调用，测试的项目为WebApi项目
+
+
 修改 Program.cs 文件，添加 UseWindowsService() 方法调用，测试的项目为WebApi项目
 
 

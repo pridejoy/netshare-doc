@@ -17,9 +17,9 @@ features:
     link: /guid/
     linkText: 快速开始
   - icon: 🚚
-    title: 常用命令
+    title: 备忘录
     details: 记录一些开发中经常使用的软件,命令等，方便查阅。
-    link: /command/docker
+    link: /command/
     linkText: 开始查阅
   - icon: 🎉
     title: 技术视野
