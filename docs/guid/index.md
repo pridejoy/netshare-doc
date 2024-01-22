@@ -3,7 +3,7 @@
 一个会持续分享编程干货和好玩的知识库。欢迎大家关注！！！
 
 
-<!-- ![](/images/netfenxiang.png) -->
+![](/images/netfenxiang.png)
 
 ##  学习路线
 

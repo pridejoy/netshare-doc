@@ -43,11 +43,11 @@ export default {
                         { text: 'IHostedService', link: '/background-service' },
                         {
                             text: '安装服务',
-                            base: '/install',
+                            base: '/guid/service/install',
                             collapsed: true,
                             items: [
                                 { text: 'Topshelf ', link: '/topshelf' },
-                                { text: '安装服务', base: '/install' },
+                                { text: '微软服务', link: '/use-windows-server' },
                             ],
                         },
                     ],
@@ -69,13 +69,15 @@ export default {
     ],
     '/command/': [
         {
-            text: '命令',
+            text: '常用软件安装和命令',
             items: [
-                { text: 'Docker', link: '/command/docker' },
-                { text: 'Nginx', link: '/command/nginx' },
-                { text: 'Pm2', link: '/command/pm2' },
-                { text: 'Redis', link: '/command/redis' },
-                { text: 'Sqlserver', link: '/command/sqlserver' },
+                { text: '1.DotNet', link: '/command/dotnet' },
+                { text: '2.Sqlserver', link: '/command/sqlserver' },
+                { text: '3.Nginx', link: '/command/nginx' },
+                { text: '4.Pm2', link: '/command/pm2' },
+                { text: '5.Redis', link: '/command/redis' },
+                { text: '6.RabbitMQ', link: '/command/rabbitmq' },
+                { text: '7.Docker', link: '/command/docker' },
             ],
         },
     ],

@@ -1,9 +1,10 @@
-<!-- 
+
 #  Docker部署一个DotNet项目
 
  
 ## Docker的一些概念
 
+```
 1. 容器：Docker 容器是一个运行在 Docker 引擎上的独立运行环境，其中包含了应用程序及其依赖项、运行时环境和配置等信息。
 2. 镜像：Docker 镜像是一个只读的模板，包含了创建 Docker 容器所需的文件系统和配置等信息。
 3. Dockerfile：Dockerfile 是一个文本文件，用于定义如何构建 Docker 镜像。
@@ -14,7 +15,7 @@
 8. Docker Volume：Docker Volume 是一种用于容器持久化存储的机制，可用于在容器和宿主机之间共享数据和配置等信息。
 9. Docker API：Docker API 是一组 RESTful API，用于与 Docker 引擎进行交互，包括创建和管理容器、镜像、网络和数据卷等功能。
 10. Docker Security：Docker 安全是一个重要的主题，包括容器隔离、容器漏洞扫描、容器镜像安全扫描等方面，以确保 Docker 容器和镜像的安全性。
-
+```
 
 ## 第一步
 
@@ -70,6 +71,7 @@ docker run -p 8000:80 your-image-name
 这个命令会启动Docker容器，并将容器的80端口映射到主机的8000端口。
 
 ## 最后
-打开你的浏览器，访问"http://localhost:8000"即可查看部署的.NET 项目。 
 
-  -->
+打开你的浏览器，访问`http://localhost:8000`即可查看部署的.NET 项目 
+
+ 

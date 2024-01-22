@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "NetShare"
-  text: "DotNet在线知识库"
+  name: "在线知识库"
+  text: "DotNET技术分享"
   tagline: 一个会持续分享编程干货和好玩的知识库
   actions:
     - theme: brand
@@ -12,19 +12,19 @@ hero:
       link: /guid/
 features:
   - icon: 💬
-    title: 编程学习
-    details: 文档用于巩固知识。
+    title: WebApi快速开发指南
+    details: 适合初级级开发人员快速入门查询
     link: /guid/
-    linkText: 编程学习
+    linkText: 快速开始
   - icon: 🚚
-    title: 备忘录
-    details: 将日常工作中遇到的问题做一份备忘录，方便查阅。
-    link: /command/
+    title: 常用命令
+    details: 记录一些开发中经常使用的软件,命令等，方便查阅。
+    link: /command/docker
     linkText: 开始查阅
   - icon: 🎉
     title: 技术视野
     details: 跟随前沿技术，深度和广度学习。
-    link: /netopensource
+    link: /netopensource/library
     linkText: 开源学习⭐ 
 ---
 

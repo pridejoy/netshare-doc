@@ -9,48 +9,48 @@
 以下是在 CentOS 上操作 Nginx 的常用命令：
 
 
-1. 安装 Nginx：
+#### 1. 安装 Nginx
    
    ```
    sudo yum install nginx
    ```
 
-2. 启动 Nginx：
+#### 2. 启动 Nginx
    
    ```
    sudo systemctl start nginx
    ```
-3. 停止 Nginx：
+#### 3. 停止 Nginx
    
    ```
    sudo systemctl stop nginx
    ```
-4. 重新加载 Nginx 配置：
+#### 4. 重新加载 Nginx 配置
    
    ```
    sudo systemctl reload nginx
    ```
-5. 重启 Nginx：
+#### 5. 重启 Nginx
    
    ```
    sudo systemctl restart nginx
    ```
-6. 查看 Nginx 状态：
+#### 6. 查看 Nginx 状态
    
    ```
    sudo systemctl status nginx
    ```
-7. 开机自启动 Nginx：
+#### 7. 开机自启动 Nginx
    
    ```
    sudo systemctl enable nginx
    ```
-8. 停止开机自启动 Nginx：
+#### 8. 停止开机自启动 Nginx
    
    ```
    sudo systemctl disable nginx
    ```
-9. 直接重启nginx服务
+#### 9. 直接重启nginx服务
 
 ```
 sudo systemctl restart nginx.service
@@ -80,5 +80,9 @@ server {
     }
 ```
 
-Forever
 
+
+### 扩展
+
+#### 申请ssl的证书
+多个配置文件
