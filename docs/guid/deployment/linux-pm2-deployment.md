@@ -86,7 +86,7 @@ pm2 start --name wallpapernet dotnet -- Wallpaper.Net.WebApi.dll --urls=https://
 
 
 
-![](https://img2023.cnblogs.com/blog/1920368/202312/1920368-20231227172553123-797243249.png)
+<!-- ![](https://img2023.cnblogs.com/blog/1920368/202312/1920368-20231227172553123-797243249.png) -->
 
 
 

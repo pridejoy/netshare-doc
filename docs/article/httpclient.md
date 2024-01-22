@@ -101,21 +101,5 @@ CancellationTokenSource cts = new CancellationTokenSource();
 cts.CancelAfter(TimeSpan.FromSeconds(10)); // 设置取消请求的时间为10秒
 ```
 
-
-#### 推荐阅读
-- [开源项目MiniWord .NET Word-Word操作](https://mp.weixin.qq.com/s/-_aVbQjFft63EwLkJdzuEQ)
-- [博客系统必备-Moonglade Blog](https://mp.weixin.qq.com/s/wfcYZLPok8VnTK4fwDMp_A)
-- [C#编写的一款电子桌面宠物-Candy](https://mp.weixin.qq.com/s/51djCV3_u7qIqDuomA8_qw)
-- [ShellProgressBar控制台中漂亮的显示进度条](https://mp.weixin.qq.com/s/dY-4svHo5yJ03EDs0ZWGtg)
-- [控制台必备神器-AnsiConsole](https://mp.weixin.qq.com/s/FBDJKIOVR6swXBAYUwd7cg)
- - [WPFUI_直观的设计主题导航和新的沉浸式控件](https://mp.weixin.qq.com/s/D-jvb3CNSYVw11j59fji_g)
- - [一款的 WPF 主题和控件包，免费开源](https://mp.weixin.qq.com/s/5zCfz2XyLi4NeJM9HQf8Ow)
-- [Net开源项目-一款电子邮件神奇](https://mp.weixin.qq.com/s/sH9vviKLf-C0GAfb1ilI5Q)
-- [NET 7 + Vue.js 的前后端分离的通用后台管理系统框架](https://mp.weixin.qq.com/s/mM8de7hnjq24H20ifjsm4g)
-
-
-欢迎关注我的公众号“**Net分享**”，技术文章第一时间推送，随缘更新 , 分享一些你可能注意不到的细节。
-
-<center>
-    <img src="https://oss.hunji.xyz/blogoss/202310/1920368-20221018151428175-1348767064.jpg" style="width: 140px;">   
-</center>
+ 
+ 
