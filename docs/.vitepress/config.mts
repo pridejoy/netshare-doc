@@ -1,8 +1,10 @@
 import { defineConfig, type DefaultTheme } from 'vitepress';
 import sidebar from './sidebar';
+import nav from './nav';
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: 'NetShare',
+    title: 'DotNET技术分享',
     description: 'A VitePress Site',
     head: [
         // 站点图标
@@ -56,23 +58,12 @@ export default defineConfig({
         logo: '/icon/logo.png',
 
         // https://vitepress.dev/reference/default-theme-config
-        nav: [
-            { text: '首页', link: '/' },
-            { text: '指南', link: '/guid/' },
-            { text: '常用命令', link: '/command/' },
-            {
-                text: '开源',
-                link: '/netopensource/',
-            },
-            {
-                text: '其他',
-                link: '/article/',
-            },
-        ],
+        nav,
         sidebar,
         // socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
         footer: {
-            message: '基于 MIT 许可发布',
+            message:
+                '迷恋自留地 | MIT License | <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备19020414号</a>',
             copyright: `版权所有 © 2019-${new Date().getFullYear()} NetShare`,
         },
         search: {
