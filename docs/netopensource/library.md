@@ -21,7 +21,7 @@
 - [Aspose.PDF](https://github.com/kmamal/pyminizip)：Python bindings for minizip
 - [QuestPDF](https://github.com/kmamal/pyminizip)：Python bindings for minizip
 - [DinkToPdf](https://github.com/kmamal/pyminizip):跨平台 支持将Word、Excel、PowerPoint、HTML、图片等多种格式的文档转换为PDF
-
+ - PdfPig
 ## 二维码,条形码
 - [Spire.Barcode](https://github.com/kmamal/pyminizip)：Python bindings for minizip
 - [ZXing.Net](https://github.com/kmamal/pyminizip)：Python bindings for minizip

@@ -1,18 +1,20 @@
 # 选项
 
-选项（Options）是一个类，用于封装应用程序的配置信息。通过定义选项类，你可以将相关配置项组织在一起，并在需要时轻松地注入到应用程序的其他组件中。
+https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/options?view=aspnetcore-8.0
 
-## 简单使用
+选项（Options）是一个类，用于封装应用程序的配置信息。通过定义选项类，你可以将相关配置项组织在一起，并在需要时轻松地注入到应用程序的其他组件中。
  
 
-配置项添加一下节点
-```js
+### 添加配置节点
+```
 "Position": {
     "Title": "Editor",
     "Name": "Joe Smith"
   }
 ```
-创建以下 PositionOptions 类：
+
+### 创建 PositionOptions 的配置选项类
+
 ```
 public class PositionOptions
 {
@@ -22,141 +24,62 @@ public class PositionOptions
 }
 ```
 
-进行强类型绑定
-```
-var positionOptions = new PositionOptions();
-Configuration.GetSection(PositionOptions.Position).Bind(positionOptions);
+### 创建一个中间件
 
-return Content($"Title: {positionOptions.Title} \n" + $"Name: {positionOptions.Name}");
-```
+所有强类型的的绑定都可以在这里进项绑定
 
-## WebApi中使用
-
-
-
-
-
-## 项目中的使用
-依赖注入容器中注册服务
-```
-// 添加静态文件读取
-builder.Services.AddSingleton(new AppSettings(builder.Configuration));
-```
-
-在全局使用读取的静态文件
 
 ```
-AppSettings.AllowCors
+public static class Configure
+{
+    public static IServiceCollection AddConfigureSetup(this IServiceCollection services,IConfiguration config)
+    { 
+        services.Configure<PositionOptions>(config.GetSection(PositionOptions.Position));
+        //等其他选项
+        return services;
+    }
+}
+
 ```
 
-
-
-## AppSettings方法
+### 注册服务
 
 ```
-    public class AppSettings
-    {
-        public static IConfiguration Configuration { get; set; }
-        static string contentPath { get; set; }
+//进行选项注册
+builder.Services.AddConfigureSetup(builder.Configuration);
+```
 
-        public AppSettings(string contentPath)
+### 读取配置
+
+- `IOptions<TOptions>`适用于在应用启动时读取配置数据，并且选项不会在应用程序生命周期内更改。它注册为单一实例并且可以注入到任何服务生存期中。
+
+- `IOptionsSnapshot<TOptions>`适用于在每次请求时重新计算选项的方案中有用。这意味着它可以读取已更新的配置数据。它不能注册为单一实例，而是注册为范围内，因此无法注入到单一实例服务中。此外，它还支持命名选项。
+
+- `IOptionsMonitor<TOptions>`是一种实时监视配置更改的接口。它是在`IOptionsSnapshot<TOptions>`基础上开发的，可以实时检测配置更改并提供通知。在每个请求中，它都会返回最新的配置选项。与`IOptionsSnapshot<TOptions>`类似，它也支持命名选项。
+ 
+
+```ts{5,7,12,18}
+    public class WeatherForecastController : ControllerBase
+    {  
+        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IConfiguration _configuration;
+        public readonly PositionOptions _PositionOptions;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+            IOptions<PositionOptions> optionsSnapshot,
+            IConfiguration configuration)
         {
-            string Path = "appsettings.json";
-
-            //如果你把配置文件 是 根据环境变量来分开了，可以这样写
-            //Path = $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json";
-
-            Configuration = new ConfigurationBuilder()
-                .SetBasePath(contentPath)
-                .Add(new JsonConfigurationSource
-                {
-                    Path = Path,
-                    Optional = false,
-                    ReloadOnChange = true
-                }) //这样的话，可以直接读目录里的json文件，而不是 bin 文件夹下的，所以不用修改复制属性
-            .Build();
+            _logger = logger;
+            _configuration = configuration;
+            _PositionOptions = optionsSnapshot.Value;
         }
-
-        public AppSettings(IConfiguration configuration)
-        {
-            Configuration = configuration;
+          
+        [HttpGet("GetWeatherForecast")]
+        public string GetSetting()
+        { 
+            return _PositionOptions.Title;
         }
-
-        /// <summary>
-        /// 封装要操作的字符
-        /// </summary>
-        /// <param name="sections">节点配置</param>
-        /// <returns></returns>
-        public static string app(params string[] sections)
-        {
-            try
-            {
-                if (sections.Any())
-                {
-                    return Configuration[string.Join(":", sections)];
-                }
-            }
-            catch (Exception)
-            {
-            }
-
-            return "";
-        }
-
-        /// <summary>
-        /// 递归获取配置信息数组
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="sections"></param>
-        /// <returns></returns>
-        public static List<T> app<T>(params string[] sections)
-        {
-            List<T> list = new List<T>();
-            // 引用 Microsoft.Extensions.Configuration.Binder 包
-            Configuration.Bind(string.Join(":", sections), list);
-            return list;
-        }
-
-
-        /// <summary>
-        /// 根据路径  configuration["App:Name"];
-        /// </summary>
-        /// <param name="sectionsPath"></param>
-        /// <returns></returns>
-        public static string GetValue(string sectionsPath)
-        {
-            try
-            {
-                return Configuration[sectionsPath];
-            }
-            catch (Exception)
-            {
-            }
-
-            return "";
-        }
-
-
-
-
-
-        #region 以下存放的全部都是静态配置
-        /// <summary>
-        /// 允许跨域请求列表
-        /// </summary>
-        public static string[] AllowCors => Configuration.GetSection("AllowCors").Get<string[]>();
-
-        /// <summary>
-        /// Jwt 配置
-        /// </summary>
-        public static class Jwt
-        {
-            public static string SecretKey => Configuration["Jwt:SecretKey"];
-            public static string Issuer => Configuration["Jwt:Issuer"];
-            public static string Audience => Configuration["Jwt:Audience"];
-        }
-        #endregion
-
-
     }
 ```
+
+
+

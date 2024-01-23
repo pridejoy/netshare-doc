@@ -64,7 +64,7 @@ export default defineConfig({
         footer: {
             message:
                 '迷恋自留地 | MIT License | <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备19020414号</a>',
-            copyright: `版权所有 © 2019-${new Date().getFullYear()} NetShare`,
+            copyright: `版权所有 © 2019-${new Date().getFullYear()} DotNET技术分享`,
         },
         search: {
             provider: 'local',
@@ -75,7 +75,7 @@ export default defineConfig({
         },
         outline: {
             label: '页面导航',
-            level:[2, 4]
+            level: [2, 4],
         },
         lastUpdated: {
             text: '最后更新于',
