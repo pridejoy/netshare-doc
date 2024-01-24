@@ -2,7 +2,9 @@
 
 
 
-文档地址:https://www.donet5.com/Home/Doc
+## 文档地址
+
+https://www.donet5.com/Home/Doc
 
 ## 简单使用
 
@@ -26,7 +28,16 @@ public class MiniServiceController : ControllerBase
 }
 ```
 
-## SqlsugarSetup
+## 注册服务
+
+
+```
+// 添加sqlsugar
+builder.Services.AddSqlsugarSetup();
+```
+
+完整的代码
+
 ```
 public static class SqlsugarSetup
 {
