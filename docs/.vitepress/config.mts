@@ -4,8 +4,8 @@ import nav from './nav';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: 'DotNET技术分享',
-    description: 'A VitePress Site',
+    title: 'DotNet技术分享',
+    description: 'DotNet技术分享',
     head: [
         // 站点图标
         ['link', { rel: 'icon', href: '/icon/favicon.ico' }],
@@ -64,7 +64,7 @@ export default defineConfig({
         footer: {
             message:
                 '迷恋自留地 | MIT License | <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备19020414号</a>',
-            copyright: `版权所有 © 2019-${new Date().getFullYear()} DotNET技术分享`,
+            copyright: `版权所有 © 2019-${new Date().getFullYear()} | DotNET技术分享`,
         },
         search: {
             provider: 'local',

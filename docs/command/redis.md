@@ -17,7 +17,25 @@ sudo apt-get install redis-server
 
 ### Windows
 
-如果你使用的是 Windows 系统，可以从 [Redis 官方网站](https://redis.io/download) 下载最新的 Windows 版本并按照提示进行安装。
+windows版本readis下载（GitHub）：
+
+https://github.com/tporadowski/redis/releases （推荐使用）
+
+https://www.alipan.com/s/nPGuvvs3YB7 （阿里云盘-Redis-x64-5.0.14.1.mis）
+
+https://www.alipan.com/s/amShuVEGpqf  （阿里云盘-桌面可视化-Another-Redis-Desktop-Manager.1.5.2.exes）
+
+https://github.com/MicrosoftArchive/redis/releases
+
+官网下载（无Windows版本）： https://redis.io/download
+
+Redis中文网站： http://www.redis.cn
+
+所有版本这里都有：https://download.redis.io/releases/
+
+（下载后是个Linux的压缩文件，需要下载、解压和编译）
+ 
+如果你使用的是 Windows 系统，可以从 Redis 官方网站 下载最新的 Windows 版本并按照提示进行安装。
 
 ## 配置 Redis
 
@@ -28,7 +46,20 @@ sudo apt-get install redis-server
 * `bind`: 设置 Redis 监听的 IP 地址，默认为 `127.0.0.1`（即本地回环地址）。
 * `port`: 设置 Redis 监听的端口号，默认为 `6379`。
 * `requirepass`: 设置 Redis 访问密码。如果启用了访问密码，客户端必须在连接 Redis 时提供正确的密码才能成功连接。
+* `protected-mode` ：设置 Redis 保护模式。保护模式默认只允许本地连接，禁止外部访问。
 
+
+
+## 配置外网访问
+
+```
+1.修改bind 选项，并修改为 bind 0.0.0.0。这样 Redis 就会监听所有网络接口上的连接。
+2.修改protected-mode 选项，并修改为 no。这样，Redis 就会接受来自任何 IP 地址的连接。
+3.修改防火墙,开启ip白名单
+4.重启redis服务
+service redis restart
+service redis status
+```
 在修改完配置文件后，你需要重启 Redis 以使更改生效。
 
 ## 常用命令
@@ -136,4 +167,51 @@ SMEMBERS myset
 # 向有序集 "mysortedset" 中添加两个成员，分别为 "Alice"（分数为 90）和 "Bob"（分数为 80）
 ZADD mysortedset 90 "Alice" 80 "Bob"
 ```
- 
+
+## 配置文件示例
+```
+# Redis 配置文件示例
+
+# 监听地址和端口
+bind 127.0.0.0        # 监听地址，仅接全部的 IP 地址，不指定则默认为 127.0.0.1，表示只允许本机的连接
+port 6379             # 监听端口，默认为 6379
+
+# 连接设置
+tcp-backlog 511       # TCP 连接队列长度
+timeout 0             # 客户端闲置超时时间，0 表示禁用
+tcp-keepalive 300     # TCP 连接的 keepalive 时间间隔，单位为秒
+
+# 日志设置
+logfile /log/redis/redis.log    # 日志文件路径
+loglevel notice                     # 日志级别
+
+# 数据库设置
+databases 16          # 数据库数量，默认为 16
+
+# 快照持久化设置
+save 900 1            # 在 900 秒内如果有至少 1 个修改操作，则创建快照
+save 300 10           # 在 300 秒内如果有至少 10 个修改操作，则创建快照
+save 60 10000         # 在 60 秒内如果有至少 10000 个修改操作，则创建快照
+stop-writes-on-bgsave-error yes     # 如果快照创建失败，是否停止写入操作
+
+# AOF 持久化设置
+appendonly no         # 是否开启 AOF 持久化，默认为关闭
+appendfilename "appendonly.aof"    # AOF 文件名
+appendfsync everysec  # 每秒钟将 AOF 缓冲区写入磁盘一次
+no-appendfsync-on-rewrite no        # 是否在 AOF 重写时禁止 fsync，默认为否
+
+# 安全设置
+requirepass foobared  # 设置连接密码
+
+# 主从复制设置
+slaveof 127.0.0.1 6380    # 设置当前服务器为主服务器的从服务器
+
+# 集群模式设置
+cluster-enabled yes         # 是否开启集群模式，默认为关闭
+cluster-config-file nodes.conf     # 集群配置文件路径
+
+# 其他设置
+maxclients 10000        # 最大客户端连接数限制
+maxmemory 1gb           # Redis 最大使用内存容量
+
+```

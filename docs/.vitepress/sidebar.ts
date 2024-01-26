@@ -26,12 +26,12 @@ export default {
                 { text: '安全鉴权', link: '/guid/auth' },
                 { text: '日志', link: '/guid/auth' },
                 {
-                    text: '中间件',
-                    base: '/guid/conf-options',
+                    text: '管道',
+                    link: '/guid/piping/',
                     collapsed: true,
                     items: [
-                        { text: '过滤器', link: '/configuration' },
-                        { text: '自定义中间件', link: '/options' },
+                        { text: '过滤器', link: '/guid/piping/filter' },
+                        { text: '中间件', link: '/guid/piping/middleware' },
                     ],
                 },
                 { text: '实时应用', link: '/guid/signalr' },
