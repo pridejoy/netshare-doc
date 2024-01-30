@@ -54,7 +54,7 @@ user.Adapt(dto);//在目标对象的基础上进行映射
 到这里已经可以使用最简单的映射了，但是，如果需要配置映射规则，需要在`TypeAdapterConfig.GlobalSettings`中配置
 更多配置，可以参考以下链接
 
-## 在线学习Mapster
+## 相关文章
 
 [原文章链接|C# Mapster 对象映射器（C#对象映射器）](https://www.cnblogs.com/qiqigou/p/13696669.html)
 

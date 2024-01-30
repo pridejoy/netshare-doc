@@ -41,13 +41,14 @@ export default {
                     collapsed: true,
                     items: [
                         { text: 'IHostedService', link: '/background-service' },
+                        { text: 'Quartz定时任务', link: '/quartz-service' },
                         {
-                            text: '安装服务',
+                            text: '安装为服务',
                             base: '/guid/service/install',
                             collapsed: true,
                             items: [
-                                { text: 'Topshelf ', link: '/topshelf' },
                                 { text: '微软服务', link: '/use-windows-server' },
+                                { text: 'Topshelf ', link: '/topshelf' },
                             ],
                         },
                     ],

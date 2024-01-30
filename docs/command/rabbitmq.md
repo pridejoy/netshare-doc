@@ -87,4 +87,5 @@
 - `rabbitmqctl delete_vhost vhostname`：删除虚拟主机。
 - `rabbitmqctl set_permissions -p vhostname username ".*" ".*" ".*"`：为指定虚拟主机设置权限。
 
+
  

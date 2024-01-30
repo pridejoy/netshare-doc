@@ -5,9 +5,10 @@
 更新中
 
 ## swagger
+
 在新建webapi项目的时候勾选支持`OpenAPI`选项后就默认的启用了swagger
 
-
+> 安装 Swashbuckle.AspNetCore
 
 ```ts{10,17-18}
 public static void Main(string[] args)

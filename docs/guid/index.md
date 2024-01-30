@@ -41,7 +41,7 @@
 
 ##  资源推荐
  知识脑图:  https://www.easy-dotnet.com/pages/f8be69/
-
+ 基础知识:  https://www.w3cschool.cn/csharp/ 
 更多学习资料，关注公众号`Net分享` 领取一份学习资料大礼包，无任何套路。
 
  

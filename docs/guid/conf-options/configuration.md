@@ -1,11 +1,9 @@
-## 官方文档
+# 配置
 
 https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
 
-
 https://learn.microsoft.com/zh-cn/dotnet/core/extensions/configuration
 
-## 配置
 
  ASP.NET Core 中的应用程序配置是使用一个或多个配置提供程序执行的。 配置提供程序使用各种配置源从键值对读取配置数据：
 
