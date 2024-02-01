@@ -46,6 +46,16 @@ export default defineConfig({
           })();
         `,
         ],
+        // 1
+        ['script', { charset: 'UTF-8', id: 'LA_COLLECT', src: '//sdk.51.la/js-sdk-pro.min.js' }],
+        // 2
+        [
+            'script',
+            {},
+            ` 
+               LA.init({id:"3HLVg3ji8KgRiH3O",ck:"3HLVg3ji8KgRiH3O"})
+            `,
+        ],
     ],
     lastUpdated: true,
     sitemap: {
