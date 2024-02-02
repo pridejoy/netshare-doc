@@ -17,7 +17,7 @@ builder.Services.AddSingleton<MyMemoryCache>();
 
  在该控制器的构造函数中注入 `MemoryCache` 对象。例如：
 
-```csharp
+```ts
 public class MyController : ControllerBase
 {
     private readonly MemoryCache _cache;
@@ -48,9 +48,14 @@ public class MyController : ControllerBase
 ```
 
 
+## 分布式缓存
 
-## 分布式 Redis 缓存
 
-## 分布式内存缓存
+### 分布式 Redis 缓存
 
-## 分布式 NCache 缓存
+### 分布式内存缓存
+
+### 分布式 NCache 缓存
+
+
+## IDistributedCache 扩展封装
