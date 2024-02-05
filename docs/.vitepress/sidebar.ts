@@ -24,7 +24,7 @@ export default {
                 { text: '依赖注入/控制反转', link: '/guid/dependency-injection' },
                 { text: '缓存', link: '/guid/cache' },
                 { text: '安全鉴权', link: '/guid/auth' },
-                { text: '日志', link: '/guid/auth' },
+                { text: '日志', link: '/guid/log' },
                 {
                     text: '管道',
                     link: '/guid/piping/',
