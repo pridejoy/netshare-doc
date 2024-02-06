@@ -49,13 +49,15 @@ public class MyController : ControllerBase
 
 
 ## 分布式缓存
+ 
+支持 分布式 Redis 缓存，分布式内存缓存，分布式 NCache 缓存
 
+ 
 
-### 分布式 Redis 缓存
+### 扩展封装
 
-### 分布式内存缓存
+```
+```
 
-### 分布式 NCache 缓存
-
-
-## IDistributedCache 扩展封装
+```
+```

@@ -5,7 +5,7 @@ export default {
             text: '指南',
             // collapsed: false,
             items: [
-                { text: '前言', link: '/guid/easy-use' },
+                { text: '前言', link: '/guid/' },
                 { text: '数据校验', link: '/guid/datavalidation' },
                 {
                     text: '配置与选项',

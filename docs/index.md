@@ -13,7 +13,7 @@ hero:
 features:
   - icon: 💬
     title: WebApi快速开发指南
-    details: 适合初级级开发人员快速入门查询
+    details: 适合初级开发人员快速入门查询
     link: /guid/
     linkText: 快速开始
   - icon: 🚚
@@ -22,7 +22,7 @@ features:
     link: /command/
     linkText: 开始查阅
   - icon: 🎉
-    title: 技术视野
+    title: 开源分享
     details: 跟随前沿技术，深度和广度学习。
     link: /netopensource/library
     linkText: 开源学习⭐ 
