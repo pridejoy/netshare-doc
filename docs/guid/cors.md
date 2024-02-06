@@ -11,7 +11,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/security/cors
 2. CORS（跨域资源共享）：服务器端设置响应头中的Access-Control-Allow-Origin字段，允许指定的域进行跨域请求。
 3. 代理服务器：在服务器端设置一个代理，将前端请求转发给目标域，而不是直接从浏览器发送跨域请求。
 4. WebSocket：使用WebSocket协议进行通信，WebSocket协议并没有同源策略的限制。
-5. ### Nginx <Badge type="danger" text="caution" /> 
+5. Nginx <Badge type="danger" text="推荐" /> 
 
 
 

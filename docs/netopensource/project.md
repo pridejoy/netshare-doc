@@ -6,6 +6,24 @@
 
 ## Web-后台管理
 
+#### Admin.NET
+
+有可能是.NET最好用的通用权限开发框架
+基于.NET6(Furion)/SqlSugar实现的通用权限开发框架，前端Vue3/Element-plus。整合最新技术，模块插件式开发，前后端分离，开箱即用。
+
+项目地址:https://gitee.com/zuohuaijun/Admin.NET
+演示环境1：http://101.43.53.74:5005/dist/index.html 
+演示环境2：http://demo.devqd.com/ 
+
+#### HzyAdmin通用管理平台
+
+.Net8、EFCore8
+ Vue3.x 、Antd Of Vue 4.x 、Vite 、Pinia 2.0.x 、TypeScript
+
+项目地址:https://gitee.com/hzy6/HzyAdmin
+预览链接: http://43.139.143.143/login
+文档地址： https://hzy6.gitee.io/docs
+
 #### Abp Vnext Pro
 https://github.com/WangJunZzz/abp-vnext-pro
 
