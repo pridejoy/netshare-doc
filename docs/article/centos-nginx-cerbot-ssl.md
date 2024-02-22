@@ -1,5 +1,7 @@
 # CentOS上配合nginx 使用 Certbot 生成SSL证书
 
+
+##  python2-certbot-nginx方式
 在 CentOS 上安装 Certbot 并使用它来获取 Let's Encrypt SSL 证书的步骤：
 
 1. 安装 Certbot：
@@ -71,7 +73,7 @@
 现在，您的网站已经启用了 HTTPS 和 Let's Encrypt SSL 证书。请确保您的域名解析正确，并且服务器 80 端口和 443 端口可访问。
 
 
-
+## Certbot的Nginx插件方式
 
 如果您的Certbot工具没有内置的Nginx插件，您可以尝试以下方法来申请证书并配置Nginx服务器：
 

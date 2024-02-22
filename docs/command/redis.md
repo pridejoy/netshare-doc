@@ -171,47 +171,40 @@ ZADD mysortedset 90 "Alice" 80 "Bob"
 ## 配置文件示例
 ```
 # Redis 配置文件示例
-
+ 
 # 监听地址和端口
-bind 127.0.0.0        # 监听地址，仅接全部的 IP 地址，不指定则默认为 127.0.0.1，表示只允许本机的连接
-port 6379             # 监听端口，默认为 6379
+bind 0.0.0.0  # 监听地址，仅接全部的 IP 地址，不指定则默认为 127.0.0.1，表示只允许本机的连接
+port 6379
 
 # 连接设置
-tcp-backlog 511       # TCP 连接队列长度
-timeout 0             # 客户端闲置超时时间，0 表示禁用
-tcp-keepalive 300     # TCP 连接的 keepalive 时间间隔，单位为秒
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300
 
 # 日志设置
-logfile /log/redis/redis.log    # 日志文件路径
-loglevel notice                     # 日志级别
+logfile "C:/Program Files/Redis/redis.log"
+loglevel notice
 
 # 数据库设置
-databases 16          # 数据库数量，默认为 16
+databases 16
 
 # 快照持久化设置
-save 900 1            # 在 900 秒内如果有至少 1 个修改操作，则创建快照
-save 300 10           # 在 300 秒内如果有至少 10 个修改操作，则创建快照
-save 60 10000         # 在 60 秒内如果有至少 10000 个修改操作，则创建快照
-stop-writes-on-bgsave-error yes     # 如果快照创建失败，是否停止写入操作
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
 
 # AOF 持久化设置
-appendonly no         # 是否开启 AOF 持久化，默认为关闭
-appendfilename "appendonly.aof"    # AOF 文件名
-appendfsync everysec  # 每秒钟将 AOF 缓冲区写入磁盘一次
-no-appendfsync-on-rewrite no        # 是否在 AOF 重写时禁止 fsync，默认为否
+appendonly no
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
 
 # 安全设置
-requirepass foobared  # 设置连接密码
-
-# 主从复制设置
-slaveof 127.0.0.1 6380    # 设置当前服务器为主服务器的从服务器
-
-# 集群模式设置
-cluster-enabled yes         # 是否开启集群模式，默认为关闭
-cluster-config-file nodes.conf     # 集群配置文件路径
+requirepass "yourpassword"
 
 # 其他设置
-maxclients 10000        # 最大客户端连接数限制
-maxmemory 1gb           # Redis 最大使用内存容量
+maxclients 10000
+maxmemory 1gb
 
 ```

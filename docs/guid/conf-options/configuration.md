@@ -95,100 +95,43 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 进行注册服务
 
 ```
-// 添加静态文件读取
-builder.Services.AddSingleton(new AppSettings(builder.Configuration));
+// 添加静态文件读取(优先级比较高)
+AppSettings.AddConfigSteup(builder.Configuration);
 ```
 在需要读取静态文件的地方直接调用`AppSettings.xx`即可
 
 
 
 ```
-public class AppSettings
+public static class AppSettings
 {
-    public static IConfiguration Configuration { get; set; }
-    static string contentPath { get; set; }
+    private static IConfiguration? _configuration;
 
-    public AppSettings(string contentPath)
+    public static IConfiguration Configuration
     {
-        string Path = "appsettings.json";
-
-        //如果你把配置文件 是 根据环境变量来分开了，可以这样写
-        //Path = $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json";
-
-        Configuration = new ConfigurationBuilder()
-            .SetBasePath(contentPath)
-            .Add(new JsonConfigurationSource
-            {
-                Path = Path,
-                Optional = false,
-                ReloadOnChange = true
-            }) //这样的话，可以直接读目录里的json文件，而不是 bin 文件夹下的，所以不用修改复制属性
-        .Build();
-    }
-
-    public AppSettings(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
-    /// <summary>
-    /// 封装要操作的字符
-    /// </summary>
-    /// <param name="sections">节点配置</param>
-    /// <returns></returns>
-    public static string app(params string[] sections)
-    {
-        try
+        get
         {
-            if (sections.Any())
-            {
-                return Configuration[string.Join(":", sections)];
-            }
+            if (_configuration == null) throw new NullReferenceException(nameof(Configuration));
+            return _configuration;
         }
-        catch (Exception)
-        {
-        }
-
-        return "";
-    }
-
-    /// <summary>
-    /// 递归获取配置信息数组
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="sections"></param>
-    /// <returns></returns>
-    public static List<T> app<T>(params string[] sections)
-    {
-        List<T> list = new List<T>();
-        // 引用 Microsoft.Extensions.Configuration.Binder 包
-        Configuration.Bind(string.Join(":", sections), list);
-        return list;
     }
 
 
     /// <summary>
-    /// 根据路径  configuration["App:Name"];
+    /// 设置 Configuration 的实例
     /// </summary>
-    /// <param name="sectionsPath"></param>
-    /// <returns></returns>
-    public static string GetValue(string sectionsPath)
+    /// <param name="configuration"></param>
+    /// <exception cref="Exception"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    public static void AddConfigSteup(IConfiguration? configuration)
     {
-        try
+        if (_configuration != null)
         {
-            return Configuration[sectionsPath];
+            throw new Exception($"{nameof(Configuration)}不可修改！");
         }
-        catch (Exception)
-        {
-        }
-
-        return "";
+        _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
-
-
-
-
-
+     
     #region 以下存放的全部都是静态配置
     /// <summary>
     /// 允许跨域请求列表
@@ -203,6 +146,17 @@ public class AppSettings
         public static string SecretKey => Configuration["Jwt:SecretKey"];
         public static string Issuer => Configuration["Jwt:Issuer"];
         public static string Audience => Configuration["Jwt:Audience"];
+    }
+
+
+    /// <summary>
+    /// Redis 配置
+    /// </summary>
+    public static class Redis
+    {
+        public static bool Enabled => Configuration.GetValue<bool>("Redis:Enabled");
+        public static string ConnectionString => Configuration["Redis:ConnectionString"]?? "ConnectionStringError";
+        public static string Instance => Configuration["Redis:Instance"] ?? "Default";
     }
     #endregion
 

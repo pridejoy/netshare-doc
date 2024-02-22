@@ -56,7 +56,7 @@ user.Adapt(dto);//在目标对象的基础上进行映射
 
 ## 相关文章
 
-[原文章链接|C# Mapster 对象映射器（C#对象映射器）](https://www.cnblogs.com/qiqigou/p/13696669.html)
+[转载链接|C# Mapster 对象映射器（C#对象映射器）](https://www.cnblogs.com/qiqigou/p/13696669.html)
 
 [Mapster官方|仓库地址](https://github.com/MapsterMapper/Mapster)
 
