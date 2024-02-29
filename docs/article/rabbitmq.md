@@ -2,7 +2,7 @@
 ## rabbitmq 
 
 
-https://blog.csdn.net/lzx1991610/article/details/102970854
+推荐的学习文章:https://blog.csdn.net/lzx1991610/article/details/102970854
 
 
 ## 五种队列

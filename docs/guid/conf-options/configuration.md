@@ -37,7 +37,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 本地开发环境 例如，appsettings.Development..json  ，优先于appsettings.json 
 
-```
+```json
 {
   "Position": {
     "Title": "Editor",
@@ -94,7 +94,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 进行注册服务
 
-```
+```ts
 // 添加静态文件读取(优先级比较高)
 AppSettings.AddConfigSteup(builder.Configuration);
 ```
@@ -102,7 +102,7 @@ AppSettings.AddConfigSteup(builder.Configuration);
 
 
 
-```
+```ts
 public static class AppSettings
 {
     private static IConfiguration? _configuration;

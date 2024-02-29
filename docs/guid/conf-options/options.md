@@ -6,7 +6,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/options
  
 
 ### 添加配置节点
-```
+```json
 "Position": {
     "Title": "Editor",
     "Name": "Joe Smith"
@@ -15,7 +15,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/options
 
 ### 创建 PositionOptions 的配置选项类
 
-```
+```ts
 public class PositionOptions
 {
     public const string Position = "Position";
@@ -29,7 +29,7 @@ public class PositionOptions
 所有强类型的的绑定都可以在这里进项绑定
 
 
-```
+```ts
 public static class Configure
 {
     public static IServiceCollection AddConfigureSetup(this IServiceCollection services,IConfiguration config)
@@ -44,7 +44,7 @@ public static class Configure
 
 ### 注册服务
 
-```
+```ts
 //进行选项注册
 builder.Services.AddConfigureSetup(builder.Configuration);
 ```

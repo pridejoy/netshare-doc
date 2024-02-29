@@ -19,7 +19,7 @@ features:
   - icon: 🚚
     title: 备忘录
     details: 记录一些开发中经常使用的软件,命令等，方便查阅。
-    link: /command/
+    link: /command//dotnet
     linkText: 开始查阅
   - icon: 🎉
     title: 开源分享

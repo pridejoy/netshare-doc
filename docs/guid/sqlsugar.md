@@ -16,7 +16,7 @@ https://www.donet5.com/Home/Doc
 
 使用的地方,先注入ISqlSugarClient，就按照文档方式直接实用就可以了
 
-```
+```ts
 public class MiniServiceController : ControllerBase
 {
     private readonly ISqlSugarClient _db;
@@ -31,7 +31,7 @@ public class MiniServiceController : ControllerBase
 ## 注册服务
 
 
-```
+```ts
 // 添加sqlsugar
 builder.Services.AddSqlsugarSetup();
 ```

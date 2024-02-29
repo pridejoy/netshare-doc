@@ -132,12 +132,12 @@ myService.DoSomething();
 > 安装 Microsoft.Extensions.DependencyInjection.Abstractions
     
 在程序入口启动注册服务 
- ```
+ ```ts
   // 自动添加服务层
   builder.Services.AddAutoServices("Wallpaper.Net.Servers");
 ```
 在使用的地方就可以通过构造来使用服务，AddAutoServices类代码如下 
-```
+```ts
  /// <summary>
  /// 自动注册程序集内以 Service 结尾的服务
  /// </summary>

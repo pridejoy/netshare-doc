@@ -17,7 +17,7 @@ PM> dotnet add package Mapster
 ```
 
 ### 定义实体
-```
+```ts
 public class User
 {
     public string Name { get; set; }
@@ -39,7 +39,7 @@ public class UserDto
 
 
 
-```
+```ts
 /*
 * 默认情况下，无需任何配置，Mapster会根据两个实体字段名称相同进行匹配
 * 第一次调用时，配置会被缓存，第二次将会从缓存中取，以此提升性能

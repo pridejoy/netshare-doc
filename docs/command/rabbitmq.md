@@ -134,4 +134,4 @@ rabbitmq-server start
 
 ## 资料
 
-- [官方文档](/articles/rabbitmq)
+- [资料](/article/rabbitmq.html)

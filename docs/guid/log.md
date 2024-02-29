@@ -1,8 +1,13 @@
 # 日志
 
 
+## 轻便的自定义日志使用方法
 
+- [方法](../article/log.md)
 
+```ts
+await WriteAsync("file", "Hello World");
+```
 
 ## Serilog
 
