@@ -5,7 +5,7 @@
 
 - [方法](../article/log.md)
 
-```ts
+```csharp
 await WriteAsync("file", "Hello World");
 ```
 

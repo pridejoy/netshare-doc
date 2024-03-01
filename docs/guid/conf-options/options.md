@@ -15,7 +15,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/options
 
 ### 创建 PositionOptions 的配置选项类
 
-```ts
+```csharp
 public class PositionOptions
 {
     public const string Position = "Position";
@@ -29,7 +29,7 @@ public class PositionOptions
 所有强类型的的绑定都可以在这里进项绑定
 
 
-```ts
+```csharp
 public static class Configure
 {
     public static IServiceCollection AddConfigureSetup(this IServiceCollection services,IConfiguration config)
@@ -44,7 +44,7 @@ public static class Configure
 
 ### 注册服务
 
-```ts
+```csharp
 //进行选项注册
 builder.Services.AddConfigureSetup(builder.Configuration);
 ```
@@ -58,7 +58,7 @@ builder.Services.AddConfigureSetup(builder.Configuration);
 - `IOptionsMonitor<TOptions>`是一种实时监视配置更改的接口。它是在`IOptionsSnapshot<TOptions>`基础上开发的，可以实时检测配置更改并提供通知。在每个请求中，它都会返回最新的配置选项。与`IOptionsSnapshot<TOptions>`类似，它也支持命名选项。
  
 
-```ts{5,7,12,18}
+```csharp{5,7,12,18}
     public class WeatherForecastController : ControllerBase
     {  
         private readonly ILogger<WeatherForecastController> _logger;

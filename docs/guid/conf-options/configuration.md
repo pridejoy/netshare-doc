@@ -61,7 +61,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 多节点使用 `_configuration["Position:Title"]` 来获取配置Position:Title的值。
 
-```ts {6,8,11,17-20}
+```csharp {6,8,11,17-20}
     [ApiController]
     [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
@@ -94,7 +94,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 进行注册服务
 
-```ts
+```csharp
 // 添加静态文件读取(优先级比较高)
 AppSettings.AddConfigSteup(builder.Configuration);
 ```
@@ -102,7 +102,7 @@ AppSettings.AddConfigSteup(builder.Configuration);
 
 
 
-```ts
+```csharp
 public static class AppSettings
 {
     private static IConfiguration? _configuration;

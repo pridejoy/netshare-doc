@@ -22,7 +22,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/security/cors
 
 ## 默认策略和中间件的CORS
 
-```ts{21,3-11}
+```csharp{21,3-11}
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>

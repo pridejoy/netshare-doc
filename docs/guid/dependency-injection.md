@@ -28,7 +28,7 @@ https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/dependency-injection?
 ## 控制反转（Inversion of Control，简称IoC）
 
 ### 什么是控制反转？
-**控制反转（Inversion of Control，简称IoC）**是一种软件设计模式，也是依赖注入的基础。在传统的编程模型中，程序的流程通常是由程序员自己控制和管理的，而在控制反转中，程序的控制权被反转，流程由外部的容器（例如IoC容器）来控制和管理。
+**控制反转**（Inversion of Control，简称IoC）是一种软件设计模式，也是依赖注入的基础。在传统的编程模型中，程序的流程通常是由程序员自己控制和管理的，而在控制反转中，程序的控制权被反转，流程由外部的容器（例如IoC容器）来控制和管理。
 
 控制反转的思想是将应用程序的控制流程交给一个容器，由容器来实现对象的创建、对象之间依赖关系的管理和调用。这样，应用程序的各个部分之间可以松耦合地进行交互，从而提高了代码的灵活性和可维护性。
 
@@ -129,15 +129,20 @@ myService.DoSomething();
 
 ## 实现自自动注册程序集内以 Service 结尾的服务
  
+::: details
+
+
+
+
 > 安装 Microsoft.Extensions.DependencyInjection.Abstractions
     
 在程序入口启动注册服务 
- ```ts
+ ```csharp
   // 自动添加服务层
   builder.Services.AddAutoServices("Wallpaper.Net.Servers");
 ```
 在使用的地方就可以通过构造来使用服务，AddAutoServices类代码如下 
-```ts
+```csharp
  /// <summary>
  /// 自动注册程序集内以 Service 结尾的服务
  /// </summary>
@@ -205,3 +210,4 @@ myService.DoSomething();
  }
 
 ```
+:::

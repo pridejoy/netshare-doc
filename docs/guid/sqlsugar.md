@@ -16,7 +16,7 @@ https://www.donet5.com/Home/Doc
 
 使用的地方,先注入ISqlSugarClient，就按照文档方式直接实用就可以了
 
-```ts
+```csharp
 public class MiniServiceController : ControllerBase
 {
     private readonly ISqlSugarClient _db;
@@ -31,14 +31,16 @@ public class MiniServiceController : ControllerBase
 ## 注册服务
 
 
-```ts
+::: details 完整的注册服务代码
+ ```csharp
 // 添加sqlsugar
 builder.Services.AddSqlsugarSetup();
 ```
 
+ 
 完整的代码
 
-```
+```csharp
 public static class SqlsugarSetup
 {
     public static void AddSqlsugarSetup(this IServiceCollection services)
@@ -93,4 +95,5 @@ public static class SqlsugarSetup
 }
 ```
 
+:::
 后续会添加EF或者其他Orm的文档

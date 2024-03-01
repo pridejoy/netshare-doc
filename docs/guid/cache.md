@@ -25,7 +25,14 @@ https://learn.microsoft.com/zh-cn/aspnet/core/performance/caching/distributed?vi
 
 #### 注册缓存服务
 
-``` ts
+::: details  AddCacheSetup
+
+```csharp
+builder.Services.AddCacheSetup();
+```
+进行中间件注册
+
+``` csharp
 public static class CacheSetup
 { 
     public static IServiceCollection AddCacheSetup(this IServiceCollection services)
@@ -54,10 +61,12 @@ public static class CacheSetup
 
 }
 ```
-
+:::
 #### CacheHelper 缓存帮助类
 
-```ts
+::: details  CacheHelper
+
+```csharp
 /// <summary>
 /// 缓存帮助类
 /// </summary>
@@ -190,16 +199,13 @@ public static class CacheHelper
     }
 }
 ```
+:::
 
-
-#### 中间件注册缓存服务
-```ts
-// 缓存
-builder.Services.AddCacheSetup();
-```
+ 
 
 #### 使用示例
-```ts
+
+```csharp
     public class WeatherForecastController : ControllerBase
     { 
         private readonly IDistributedCache _cache;
@@ -233,7 +239,7 @@ builder.Services.AddCacheSetup();
 }
 ```
 
-### 自定义缓存方式
+### 自定义接口方式
 
 扩展比较方便，可以更好的使用第三方扩展包，更改的时候比较方便，可以支持更高级的功能
 比如说获取全部缓存，获取指定前缀的key，可以方便的使用分布式锁，等等等
@@ -265,14 +271,14 @@ builder.Services.AddCacheSetup();
 
 中间件的注册
  
-```ts  
+```csharp  
 
 ```
 
  
 
 
-```ts
+```csharp
  public void ConfigureServices(IServiceCollection services)
  {
      services.AddConfigurableOptions<CacheConfigsOptions>();// 注册配置选项

@@ -25,9 +25,27 @@ public class Product
 }
 ```
 
+#### 内置特性
+以下是一些内置验证特性：
+
+- [ValidateNever](/zh-cn/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.validation.validateneverattribute)：指示应将某一属性或参数排除在验证外。
+- [CreditCard](/zh-cn/dotnet/api/system.componentmodel.dataannotations.creditcardattribute)：验证属性是否有信用卡格式。 需要 [jQuery Validation 附加方法](https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js)。
+- [Compare](/zh-cn/dotnet/api/system.componentmodel.dataannotations.compareattribute)：验证模型中的两个属性是否匹配。
+- [EmailAddress](/zh-cn/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)：验证属性是否有电子邮件格式。
+- [Phone](/zh-cn/dotnet/api/system.componentmodel.dataannotations.phoneattribute)：验证属性是否有电话号码格式。
+- [Range](/zh-cn/dotnet/api/system.componentmodel.dataannotations.rangeattribute)：验证属性值是否在指定范围内。
+- [RegularExpression](/zh-cn/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute)：验证属性值是否与指定的正则表达式匹配。
+- [Required](/zh-cn/dotnet/api/system.componentmodel.dataannotations.requiredattribute)：验证字段是否不为 null。 请参阅 [Required] 属性，获取关于该特性的行为的详细信息。
+- [StringLength](/zh-cn/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute)：验证字符串属性值是否未超过指定长度限制。
+- [Url](/zh-cn/dotnet/api/system.componentmodel.dataannotations.urlattribute)：验证属性是否有 URL 格式。
+- [Remote](/zh-cn/dotnet/api/microsoft.aspnetcore.mvc.remoteattribute)：通过调用服务器上的操作方法，验证客户端上的输入。
+ 
+
+在 [System.ComponentModel.DataAnnotations](/zh-cn/dotnet/api/system.componentmodel.dataannotations) 命名空间中可找到验证特性的完整列表。
+
 ### 2. 使用Fluent Validation
 
-Fluent Validation是一个.NET库，它允许你以流畅的接口创建强大的校验规则。这种方式比数据注解提供了更多的灵活性和复杂的校验逻辑。
+Fluent Validation 是一个.NET库，它允许你以流畅的接口创建强大的校验规则。这种方式比数据注解提供了更多的灵活性和复杂的校验逻辑。
 
 首先，需要安装Fluent Validation库：
 
