@@ -4,8 +4,8 @@ import nav from './nav';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: 'DotNet技术分享',
-    description: 'DotNet技术分享',
+    title: 'DotNet分享',
+    description: 'DotNet分享',
     head: [
         // 站点图标
         ['link', { rel: 'icon', href: '/icon/favicon.ico' }],

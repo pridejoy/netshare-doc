@@ -7,6 +7,10 @@ export default [
         link: '/netopensource/library',
     },
     {
+        text: '面试',
+        link: '/interview/',
+    },
+    {
         text: '其他',
         link: '/article/',
     },

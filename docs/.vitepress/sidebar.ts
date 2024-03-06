@@ -92,4 +92,16 @@ export default {
             ],
         },
     ],
+    '/interview/': [
+        {
+            text: '面试题',
+            collapsed: false,
+            items: [
+                { text: '智赢面试题', link: '/interview/zhiying' },
+                { text: '基础试题1', link: '/interview/basepaper1' },
+                { text: '随机试卷1', link: '/interview/randompaper1' },
+                { text: '随机试卷2', link: '/interview/randompaper2' },
+            ],
+        },
+    ],
 };
