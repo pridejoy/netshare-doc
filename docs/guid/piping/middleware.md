@@ -1,4 +1,8 @@
 
+## [全局异常中间件](../exception-handling)
+ 
+## [日志中间件](../log) 
+
 ## 自定义中间件
 
 https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/middleware/write?view=aspnetcore-8.0
