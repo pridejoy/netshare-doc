@@ -18,7 +18,16 @@ export default {
                 },
                 { text: '跨域', link: '/guid/cors' },
                 { text: 'Swagger', link: '/guid/swagger' },
-                { text: 'SqlSugar', link: '/guid/sqlsugar' },
+                {
+                    text: '数据库操作',
+                    base: '/guid/orm',
+                    collapsed: true,
+                    items: [
+                        { text: 'SqlSugar', link: '/sqlsugar' },
+                        { text: 'EF', link: '/ef' },
+                    ],
+                    link: '',
+                },
                 { text: '对象关系映射', link: '/guid/mapper' },
                 { text: '异常处理', link: '/guid/exception-handling' },
                 { text: '依赖注入/控制反转', link: '/guid/dependency-injection' },

@@ -1,6 +1,6 @@
 # 对象关系映射
 
-在这里推荐Mapster，**Mapster**性能优于 AutoMapper，上手简单方便，更多的学习见章尾
+在这里推荐Mapster，**Mapster**性能优于 AutoMapper，上手简单方便
 
 ## 简单使用
 
@@ -30,7 +30,7 @@ public class UserDto
 ```
 
 
-
+简单使用
 
 ```csharp
 /*

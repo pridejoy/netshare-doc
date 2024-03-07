@@ -95,5 +95,4 @@ public static class SqlsugarSetup
 }
 ```
 
-:::
-后续会添加EF或者其他Orm的文档
+::: 
