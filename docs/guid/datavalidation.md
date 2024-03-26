@@ -7,6 +7,8 @@ https://learn.microsoft.com/zh-cn/aspnet/core/mvc/models/validation?view=aspnetc
 
 ### 1. 使用数据注解（Data Annotations）
 
+
+
 数据注解是.NET中一种简单直观的数据校验方式。通过在模型属性上添加特定的注解**Attribute**，你可以定义对该属性的校验规则。
 
 ```csharp
@@ -43,6 +45,13 @@ public class Product
  
 
 在 [System.ComponentModel.DataAnnotations](https://learn.microsoft.com/zh-cn/dotnet/api/system.componentmodel.dataannotations) 命名空间中可找到验证特性的完整列表。
+
+
+
+
+
+
+
 
 ### 2. 使用Fluent Validation
 
