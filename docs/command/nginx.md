@@ -80,6 +80,8 @@ server {
     }
 ```
 
+### windos安装为服务
+两种方法：https://www.cnblogs.com/xiangzhong/p/17945202
 
 
 ### 扩展
