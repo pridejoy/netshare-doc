@@ -70,7 +70,7 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         nav,
         sidebar,
-        // socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+        socialLinks: [{ icon: 'github', link: 'https://gitee.com/Pridejoy' }],
         footer: {
             message:
                 '迷恋自留地 | MIT License | <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备19020414号</a>',
