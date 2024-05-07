@@ -2,10 +2,17 @@ export default {
     // 当用户位于 `guide` 目录时，会显示此侧边栏
     '/guid/': [
         {
+            text: '开始',
+            items: [
+                { text: '简介', link: '/guid/intro' },
+                { text: '快速上手', link: '/guid/quick-start' },
+                { text: '学习路径', link: '/guid/learn-path' },
+            ],
+        },
+        {
             text: '指南',
             // collapsed: false,
             items: [
-                { text: '前言', link: '/guid/' },
                 { text: '数据校验', link: '/guid/datavalidation' },
                 {
                     text: '配置与选项',
@@ -108,13 +115,30 @@ export default {
             text: '面试题',
             collapsed: false,
             items: [
-                { text: '智赢面试题', link: '/interview/zhiying' },
-                { text: '物流高级面试题', link: '/interview/yuehai' },
-                { text: '基础试题1', link: '/interview/basepaper1' },
-                { text: '随机试卷1', link: '/interview/randompaper1' },
-                { text: '随机试卷2', link: '/interview/randompaper2' },
-                { text: '中高级开发工程师', link: '/interview/intermediate1' },
+                { text: '240422-zy面试题', link: '/interview/zhiying' },
+                { text: '240422-物流高级面试题', link: '/interview/yuehai' },
+                { text: '240306-基础试题1', link: '/interview/basepaper1' },
+                { text: '240306-随机试卷1', link: '/interview/randompaper1' },
+                { text: '240306-随机试卷2', link: '/interview/randompaper2' },
+                { text: '240306-中高级开发工程师', link: '/interview/intermediate1' },
             ],
+        },
+    ],
+    '/article/': [
+        {
+            text: '文章',
+            items: [
+                {
+                    text: '1. CentOS上配合nginx 使用 Certbot 生成SSL证书',
+                    link: '/article/centos-nginx-cerbot-ssl',
+                },
+                { text: '2.HttpClient的简单用法', link: '/article/httpclient' },
+                { text: '3.全局和隐式usings', link: '/article/globalusing' },
+            ],
+        },
+        {
+            text: '前端',
+            items: [{ text: 'NVM快速切换NodeJS版本', link: '/article/nvm' }],
         },
     ],
 };
