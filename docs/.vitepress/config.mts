@@ -4,7 +4,7 @@ import nav from './nav';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: 'DotNet分享',
+    title: 'NetShare',
     description: 'DotNet分享',
     head: [
         // 站点图标

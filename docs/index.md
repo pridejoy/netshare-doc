@@ -15,7 +15,7 @@ hero:
       link: /guid/ 
     - theme: alt
       text: 介绍
-      link: /introduction
+      link: /guid/
     - theme: alt
       text: 在 GitHub 上查看
       link: https://gitee.com/Pridejoy/MalusAdmin

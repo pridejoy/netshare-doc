@@ -140,5 +140,25 @@ export default {
             text: '前端',
             items: [{ text: 'NVM快速切换NodeJS版本', link: '/article/nvm' }],
         },
+        {
+            text: '学习系列',
+            items: [
+                {
+                    text: 'TS快速上手',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '1. 基础类型',
+                            link: '/article/learn_ts/1_type',
+                        },
+                        { text: '2. 接口', link: '/article/learn_ts/2_interface' },
+                        { text: '3. 类', link: '/article/learn_ts/3_class' },
+                        { text: '4. 函数', link: '/article/learn_ts/4_function' },
+                        { text: '5. 泛型', link: '/article/learn_ts/5_generic' },
+                        { text: '6. 其它', link: '/article/learn_ts/6_other' },
+                    ],
+                },
+            ],
+        },
     ],
 };
