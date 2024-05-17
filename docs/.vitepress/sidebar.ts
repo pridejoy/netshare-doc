@@ -129,7 +129,7 @@ export default {
             text: '文章',
             items: [
                 {
-                    text: '1. CentOS上配合nginx 使用 Certbot 生成SSL证书',
+                    text: '1. CentOS上Nginx用Certbot生成SSL证书',
                     link: '/article/centos-nginx-cerbot-ssl',
                 },
                 { text: '2.HttpClient的简单用法', link: '/article/httpclient' },
