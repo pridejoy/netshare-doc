@@ -4,10 +4,10 @@ layout: home
 
 hero:
   name: "NetShare"
-  text: "在线Dotnet知识库"
-  tagline: 一个会持续分享编程干货和好玩的知识库
+  text: "Dotnet在线知识库"
+  tagline: 🔥 学如逆水行舟，不进则退！
   image:
-    src: /logo.svg
+    src: /it.svg
     alt: NetShare
   actions:
     - theme: brand
@@ -43,4 +43,4 @@ features:
     
 ---
 
-<DataPanel/>
+ 

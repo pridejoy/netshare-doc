@@ -65,8 +65,7 @@ export default defineConfig({
         lineNumbers: true,
     },
     themeConfig: {
-        logo: '/icon/logo.png',
-
+        // logo: '/logo.svg',
         // https://vitepress.dev/reference/default-theme-config
         nav,
         sidebar,
