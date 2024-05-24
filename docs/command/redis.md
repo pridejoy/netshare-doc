@@ -2,18 +2,105 @@
 
 ## 安装 Redis
 
-### MacOS / Linux
+###   Linux-Centos
 
-如果你使用的是 MacOS 或 Linux 系统，可以通过以下命令进行安装：
+在 CentOS 系统上安装 Redis 可以通过多种方式，以下是两种常见的安装方法：
 
-```bash
-# 使用 Homebrew 安装
-brew install redis
+####  使用包管理器（例如 yum） [推荐]
 
-# 或者使用 apt-get 安装（Debian/Ubuntu）
-sudo apt-get update
-sudo apt-get install redis-server
-```
+1. **更新包管理器**：
+   ```sh
+   sudo yum update
+   ```
+
+2. **安装 Redis**：
+   ```sh
+   sudo yum install redis
+   ```
+
+3. **启动 Redis 服务**：
+   ```sh
+   sudo systemctl start redis
+   ```
+
+4. **设置 Redis 开机自启**：
+   ```sh
+   sudo systemctl enable redis
+   ```
+
+5. **检查 Redis 服务状态**：
+   ```sh
+   sudo systemctl status redis
+   ```
+
+#### 编译安装[未测试]
+
+1. **安装依赖**：
+   Redis 需要一些依赖包，如 gcc、tcl 等。可以使用以下命令安装：
+   ```sh
+   sudo yum groupinstall "Development Tools"
+   sudo yum install -y tcl
+   ```
+
+2. **下载 Redis**：
+   访问 Redis 官网下载最新版本，或者使用 wget 命令：
+   ```sh
+   wget http://download.redis.io/redis-stable.tar.gz
+   ```
+
+3. **解压 Redis**：
+   ```sh
+   tar xzf redis-stable.tar.gz
+   ```
+
+4. **编译 Redis**：
+   ```sh
+   cd redis-stable
+   make
+   ```
+
+5. **安装 Redis**（可选，将编译后的可执行文件安装到系统路径）：
+   ```sh
+   make install
+   ```
+
+6. **配置 Redis**：
+   根据需要编辑 `redis.conf` 文件，通常位于 `/usr/local/etc/redis/redis.conf`。
+
+7. **启动 Redis**：
+   使用以下命令启动 Redis 服务：
+   ```sh
+   redis-server /usr/local/etc/redis/redis.conf
+   ```
+
+8. **设置 Redis 开机自启**：
+   创建一个 systemd 服务文件，例如 `/etc/systemd/system/redis.service`，并添加以下内容：
+   ```ini
+   [Unit]
+   Description=Redis In-Memory Data Store
+   After=network.target
+
+   [Service]
+   User=redis
+   Group=redis
+   ExecStart=/usr/local/bin/redis-server /usr/local/etc/redis/redis.conf
+   ExecStop=/usr/local/bin/redis-cli shutdown
+   Restart=always
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+   然后启用并启动服务：
+   ```sh
+   sudo systemctl enable redis.service
+   sudo systemctl start redis.service
+   ```
+
+9. **检查 Redis 服务状态**：
+   ```sh
+   sudo systemctl status redis.service
+   ```
+ 
 
 ### Windows
 
@@ -21,11 +108,9 @@ windows版本readis下载（GitHub）：
 
 https://github.com/tporadowski/redis/releases （推荐使用）
 
-https://www.alipan.com/s/nPGuvvs3YB7 （阿里云盘-Redis-x64-5.0.14.1.mis）
+https://www.alipan.com/s/nPGuvvs3YB7 （Redis-x64-5.0.14.1.mis）
 
-https://www.alipan.com/s/amShuVEGpqf  （阿里云盘-桌面可视化-Another-Redis-Desktop-Manager.1.5.2.exes）
-
-https://github.com/MicrosoftArchive/redis/releases
+https://www.alipan.com/s/amShuVEGpqf  （桌面可视化-Another-Redis-Desktop-Manager.1.5.2.exe）
 
 官网下载（无Windows版本）： https://redis.io/download
 
@@ -33,13 +118,29 @@ Redis中文网站： http://www.redis.cn
 
 所有版本这里都有：https://download.redis.io/releases/
 
-（下载后是个Linux的压缩文件，需要下载、解压和编译）
  
-如果你使用的是 Windows 系统，可以从 Redis 官方网站 下载最新的 Windows 版本并按照提示进行安装。
+ ### Docker
 
-## 配置 Redis
+ https://www.runoob.com/docker/docker-install-redis.html
 
-安装完成后，Redis 的默认配置文件位于 `/etc/redis/redis.conf`（MacOS / Linux）或 `C:\Program Files\Redis\redis.windows.conf`（Windows）。你可以根据需要修改该文件中的配置。
+
+##  Redis 配置的文件
+ 
+ 
+- 默认配置文件通常位于 `/etc/redis/` 目录下。
+- 主配置文件可能是 `redis.conf`。
+ 
+ 
+**查找配置文件**：
+   如果不确定配置文件的位置，可以使用 `find` 命令搜索整个系统：
+   ```sh
+   find / -name redis.conf 2>/dev/null
+   ```
+ 
+ 
+
+安装完成后，Redis 的默认配置文件位于 `/etc/redis.conf`（ Linux）或 `C:\Program Files\Redis\redis.windows.conf`（Windows）。
+可以根据需要修改该文件中的配置。
 
 以下是一些常见的配置选项：
 

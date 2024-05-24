@@ -41,15 +41,15 @@ export default {
                 { text: '缓存', link: '/guid/cache' },
                 { text: '安全鉴权', link: '/guid/auth' },
                 { text: '日志', link: '/guid/log' },
-                {
-                    text: '管道',
-                    link: '/guid/piping/',
-                    collapsed: true,
-                    items: [
-                        { text: '过滤器', link: '/guid/piping/filter' },
-                        { text: '中间件', link: '/guid/piping/middleware' },
-                    ],
-                },
+                // {
+                //     text: '管道',
+                //     link: '/guid/piping/',
+                //     collapsed: true,
+                //     items: [
+                //         { text: '过滤器', link: '/guid/piping/filter' },
+                //         { text: '中间件', link: '/guid/piping/middleware' },
+                //     ],
+                // },
                 { text: '实时应用', link: '/guid/signalr' },
                 {
                     text: '后台服务',
@@ -138,7 +138,10 @@ export default {
         },
         {
             text: '前端',
-            items: [{ text: 'NVM快速切换NodeJS版本', link: '/article/nvm' }],
+            items: [
+                { text: 'NVM快速切换NodeJS版本', link: '/article/nvm' },
+                { text: '快速删除node_modules文件夹', link: '/article/delete_mode_moules' },
+            ],
         },
         {
             text: '学习系列',
