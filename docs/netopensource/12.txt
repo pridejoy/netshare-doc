@@ -1,0 +1,24 @@
+# 开源项目
+
+
+## 后台管理
+
+- [Admin.NET](https://gitee.com/zuohuaijun/Admin.NET)：基于.NET6(Furion)/SqlSugar实现的通用权限开发框架，前端Vue3/Element-plus。整合最新技术，模块插件式开发，前后端分离，开箱即用。
+
+
+
+
+
+
+## 开源库
+- [AnsiConsole](https://spectreconsole.net/)：一种简单但强大的方式来创建美观和交互式的控制台应用程序
+- [Topshelf](https://github.com/Topshelf/Topshelf)：创建Windows服务的另一种优雅方法
+- [Furion](https://gitee.com/dotnetchina/Furion)：一个应用程序框架，您可以将它集成到任何 .NET/C# 应用程序中。
+
+
+
+
+## 开源软件
+
+- [SCRCPY](https://github.com/Genymobile/scrcpy)：通过连接的Android设备（视频和音频） USB或通过TCP / IP控制，并允许控制 带有计算机键盘和鼠标的设备
+- [ScreenToGif](https://github.com/NickeManarin/ScreenToGif)：此工具允许您记录屏幕的选定区域、来自网络摄像头的实时馈送或来自素描板的实时绘图。之后，您可以编辑动画并将其保存为 gif、apng、视频、psd 或 png 图像。

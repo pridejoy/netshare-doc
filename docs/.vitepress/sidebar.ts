@@ -102,11 +102,29 @@ export default {
     ],
     '/netopensource/': [
         {
-            text: '开源',
+            text: '开源库',
             collapsed: false,
             items: [
-                { text: '开源库', link: '/netopensource/library' },
-                { text: '开源项目', link: '/netopensource/project' },
+                { text: 'ORM', link: '/netopensource/library/orm' },
+                { text: 'Zip', link: '/netopensource/library/zip' },
+                { text: 'Excel', link: '/netopensource/library/excel' },
+                { text: 'Word', link: '/netopensource/library/word' },
+                { text: 'Pdf', link: '/netopensource/library/pdf' },
+                { text: '条形码二维码', link: '/netopensource/library/qrcode' },
+                { text: '工具库', link: '/netopensource/library/pdf' },
+                { text: 'Redis', link: '/netopensource/library/pdf' },
+                { text: '微信相关的', link: '/netopensource/library/pdf' },
+                { text: '其他库', link: '/netopensource/library/other' },
+            ],
+        },
+        {
+            text: '开源项目',
+            collapsed: false,
+            items: [
+                { text: 'Web-后台管理', link: '/netopensource/project/admin' },
+                { text: '博客', link: '/netopensource/project' },
+                { text: 'Wpf', link: '/netopensource/project' },
+                { text: '其他', link: '/netopensource/project' },
             ],
         },
     ],
@@ -126,24 +144,6 @@ export default {
     ],
     '/article/': [
         {
-            text: '文章',
-            items: [
-                {
-                    text: '1. CentOS上Nginx用Certbot生成SSL证书',
-                    link: '/article/centos-nginx-cerbot-ssl',
-                },
-                { text: '2.HttpClient的简单用法', link: '/article/httpclient' },
-                { text: '3.全局和隐式usings', link: '/article/globalusing' },
-            ],
-        },
-        {
-            text: '前端',
-            items: [
-                { text: 'NVM快速切换NodeJS版本', link: '/article/nvm' },
-                { text: '快速删除node_modules文件夹', link: '/article/delete_mode_moules' },
-            ],
-        },
-        {
             text: '学习系列',
             items: [
                 {
@@ -161,6 +161,34 @@ export default {
                         { text: '6. 其它', link: '/article/learn_ts/6_other' },
                     ],
                 },
+                {
+                    text: '排序',
+                    collapsed: true,
+                    items: [{ text: '十大排序', link: '/article/learn_sort/ten_algorithm' }],
+                },
+                {
+                    text: '设计模式',
+                    collapsed: true,
+                    items: [{ text: '十大排序', link: '/article/learn_sort/ten_algorithm' }],
+                },
+            ],
+        },
+        {
+            text: '文章',
+            items: [
+                {
+                    text: '1. CentOS上Nginx用Certbot生成SSL证书',
+                    link: '/article/centos-nginx-cerbot-ssl',
+                },
+                { text: '2.HttpClient的简单用法', link: '/article/httpclient' },
+                { text: '3.全局和隐式usings', link: '/article/globalusing' },
+            ],
+        },
+        {
+            text: '前端',
+            items: [
+                { text: 'NVM快速切换NodeJS版本', link: '/article/nvm' },
+                { text: '快速删除node_modules文件夹', link: '/article/delete_mode_moules' },
             ],
         },
     ],
