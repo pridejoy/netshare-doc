@@ -12,9 +12,11 @@ const RSS: RSSOptions = {
   baseUrl: "https://www.dotnetshare.com",
   copyright: 'Copyright (c) 2018-present, NetShare',
 }
+const base = '/netshare-doc/'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base,
   // 继承博客主题配置
   // extends: blogTheme,
   title: 'NetShare',
