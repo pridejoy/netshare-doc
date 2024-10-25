@@ -1,8 +1,10 @@
-# 使用Supervisor守护dotnet应用程序
+# 在Linux上使用Supervisor守护Dotnet应用  
 
-是的，Supervisor可以用于守护和管理dotnet应用程序。Supervisor是一个通用的进程管理器，可以监控并自动重启任何类型的进程，包括dotnet应用程序。
+ Supervisor可以用于守护和管理dotnet应用程序。
 
-## 基本步骤：
+ Supervisor是一个通用的进程管理器，可以监控并自动重启任何类型的进程，包括dotnet应用程序。
+
+## 基本步骤
 
 1. 安装Supervisor：在Linux系统中，可以使用包管理器来安装Supervisor。例如，在Ubuntu上，可以使用以下命令来安装Supervisor：
 
@@ -40,4 +42,4 @@
    sudo supervisorctl start myapp
    ```
 
-   此时，Supervisor将开始监控并守护您的dotnet应用程序。如果应用程序崩溃或异常退出，Supervisor将自动重启应用程序，并将错误信息记录到相应的日志文件中。 
+此时，Supervisor将开始监控并守护您的dotnet应用程序。如果应用程序崩溃或异常退出，Supervisor将自动重启应用程序，并将错误信息记录到相应的日志文件中。

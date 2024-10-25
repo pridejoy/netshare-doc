@@ -2,8 +2,9 @@
  
 一个会持续分享编程干货和好玩的知识库。欢迎大家关注！！！
 
+http://weixin.qq.com/r/qzj377TEKulVrfCM9225
 
-![](/docs/public/images/netfenxiang.png)
+<img src="/netshare.svg" width="200" height="200" alt="Netshare">
 
 ##  学习路线
 

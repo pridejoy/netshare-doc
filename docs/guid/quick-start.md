@@ -1,6 +1,5 @@
 # 快速开始
 
-
 ## 环境准备
 
 确保你的环境满足以下要求：
@@ -13,20 +12,30 @@
 ## 代码获取
 
 ##### 从 Gitee 获取代码
+
 ```
 git clone https://gitee.com/Pridejoy/MalusAdmin.git
-``` 
-
- ##### 从 GitHub 获取代码
- ```
-git clone https://github.com/Pridejoy/MalusAdmin.git 
 ```
 
-::: danger 注意 
+##### 数据库文件
 
-最新版本的代码以 gitee 为准。
-:::
-## 安装依赖
+<https://gitee.com/Pridejoy/MalusAdmin/blob/master/doc/dbsql/20240611.sql>
+
+## 运行
+
 ```
+//依赖安装
 pnpm i
+//运行前端
+pnpm run dev
 ```
+
+## 注意事项
+
+> [!CAUTION]
+> 二级路由的名字应该:当前路由的父级路由的名字 + 当前路由的名字
+
+|MenuName| RouteName | Component | Path|
+| ------ | :-------: | ----|----|
+|客户列表 | business_customer |view.business_calen |/business/calen
+|三级路由 | business_customer_tree |view.business_calen_tree |/business/calen/tree

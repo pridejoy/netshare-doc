@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "NetShare"
-  text: "Dotnet在线知识库"
-  tagline: 🔥 学如逆水行舟，不进则退！
+  text: "全栈知识体系"
+  tagline: 🔥 学如逆水行舟，不进则退！ 
   image:
     src: /it.svg
     alt: NetShare
@@ -44,3 +44,7 @@ features:
 ---
 
  
+
+<!-- 本站总访问量 <span id="busuanzi_value_site_pv" /> 次
+
+本站访客数 <span id="busuanzi_value_site_uv" /> 人次 -->

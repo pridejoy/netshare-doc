@@ -1,36 +1,45 @@
 # 对象关系映射
 
-在这里推荐Mapster，**Mapster**性能优于 AutoMapper，上手简单方便
+将一个对象的值批量映射到另一个对象中，支持自定义映射规则。
 
-## 简单使用
+## 传统模式
 
-### 安装
+假设有两个类型：Student 和 StudentDto，现在需要将 Student 对象赋值给 StudentDto
 
-PM> dotnet add package Mapster 
-
-### 使用
+Student
 
 ```csharp
-public class User
+var student = new Student() 
 {
-    public string Name { get; set; }
-    public int Age { get; set; }
-    public string Sex { get; set; }
-    public string like { get; set; }
-}
-
-public class UserDto
+    FirstName = "Monk",
+    LastName = "Soul",
+    Age = 27,
+    Address = "广东省珠海市香洲区吉大路",
+    Gender = "男"
+};
+// 赋值
+var studentDto = new StudentDto()
 {
-    public string name { get; set; }
-    public int UserAge { get; set; }
-    public string UserSex { get; set; }
-    public string like { get; set; }
+    FullName = student.FirstName + student.LastName,
+    Age = student.Age,
+    Gender = student.Gender
 }
-
 ```
 
+确实，这样的代码咋看没什么不妥，但是有几个漏洞：
 
-简单使用
+- 如果字段繁多，这赋值操作相当耗时间且容易出错
+- 如果多次需要将 Student映射到 StudentDto中，则这样的代码散落在很大地方，给维护带来了极大的困扰
+- 这样的赋值操作实际上污染了业务逻辑代码，不利于后续的统一管理
+- 这样的赋值操作实在是多，无意增加了项目包的大小，开发效率也会低下
+
+所以，我们迫切需要一种更加灵活、简易的对象赋值（映射）方式。
+
+## 对象映射组件-Mapster
+
+在这里推荐Mapster，**Mapster** 性能优于 AutoMapper，简单易用，而且性能极高
+
+>`PM> dotnet add package Mapster`
 
 ```csharp
 /*
@@ -44,13 +53,8 @@ user.Adapt(dto);//在目标对象的基础上进行映射
 //注意：Adapt扩展方法使用的配置为 `TypeAdapterConfig.GlobalSettings`
 
 ```
+
 到这里已经可以使用最简单的映射了，但是，如果需要配置映射规则，需要在`TypeAdapterConfig.GlobalSettings`中配置
-更多配置，可以参考以下链接
+更多配置，可以参考[教程](https://www.cnblogs.com/qiqigou/p/13696669.html)
 
-## 相关文章
-
-[转载链接|C# Mapster 对象映射器（C#对象映射器）](https://www.cnblogs.com/qiqigou/p/13696669.html)
-
-[Mapster官方|仓库地址](https://github.com/MapsterMapper/Mapster)
-
-[Mapster中文文档](https://github.com/rivenfx/Mapster-docs)
+更多  `Mapster`  可查看[官方文档](https://github.com/MapsterMapper/Mapster/wiki)

@@ -1,11 +1,10 @@
 # 配置
 
-https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
+ ASP.NET Core 中的应用程序配置是使用一个或多个配置提供程序执行的。
 
-https://learn.microsoft.com/zh-cn/dotnet/core/extensions/configuration
+## 可读取的类型
 
-
- ASP.NET Core 中的应用程序配置是使用一个或多个配置提供程序执行的。 配置提供程序使用各种配置源从键值对读取配置数据：
+  配置提供程序使用各种配置源从键值对读取配置数据：
 
 - 设置文件，例如 appsettings.json,xml,ini,etc.等
 - 环境变量
@@ -18,12 +17,14 @@ https://learn.microsoft.com/zh-cn/dotnet/core/extensions/configuration
 
 在创建的 ASP.NET Core Web 应用会生成以下代码
 
-
 `var builder = WebApplication.CreateBuilder(args);`
 
 WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例会包含一个 IConfiguration 对象。在创建 WebApplication 实例时，会自动加载应用程序的配置文件并构建 IConfiguration 对象
 
+## 读取的顺序优先级
+
 按照以下顺序为应用提供默认配置（从最高优先级到最低优先级）：
+
 1. 使用命令行配置提供程序通过命令行参数提供。
 2. 使用非前缀环境变量配置提供程序通过非前缀环境变量提供。
 3. 应用在 Development 环境中运行时的用户机密。
@@ -35,7 +36,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 
 在本地appsettings.Development.json 文件中更改
 
-本地开发环境 例如，appsettings.Development..json  ，优先于appsettings.json 
+本地开发环境 例如，appsettings.Development..json  ，优先于appsettings.json
 
 ```json
 {
@@ -55,6 +56,7 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 }
 
 ```
+
 在构造的时候接受一个 IConfiguration 对象作为参数，并将其赋值给 _configuration 变量，
 
 然后就可以使用 `_configuration["MyKey"]`来获取配置MyKey的值。
@@ -87,7 +89,6 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
     }
 ```
 
-
 ## 封装的方法
 
 完整读取静态配置的方法见下方代码
@@ -98,9 +99,8 @@ WebApplication.CreateBuilder(args) 方法默认创建的 WebApplication 实例�
 // 添加静态文件读取(优先级比较高)
 AppSettings.AddConfigSteup(builder.Configuration);
 ```
+
 在需要读取静态文件的地方直接调用`AppSettings.xx`即可
-
-
 
 ```csharp
 public static class AppSettings
@@ -163,3 +163,5 @@ public static class AppSettings
 
 }
 ```
+
+更多关于资料可查阅[官方文档](https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)。

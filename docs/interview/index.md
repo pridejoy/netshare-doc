@@ -3,7 +3,7 @@
 
 收集一些网友分享的面试题，欢迎大家分享！
 
- ![](/images/netfenxiang.png)
+<img src="/netshare.svg" width="200" height="200" alt="Netshare">
 
 一个会持续分享编程干货和好玩的知识库。欢迎大家关注！！！
 

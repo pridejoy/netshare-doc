@@ -1,209 +1,49 @@
-# 缓存 
-https://learn.microsoft.com/zh-cn/aspnet/core/performance/caching/distributed?view=aspnetcore-8.0
+# 缓存管理
 
-## 分布式缓存
+将一些不经常改变的数据缓存起来能够大大提高系统的吞吐量。
 
-###  IDistributedCache方式
+## 概念
 
-微软自带的方式，IDistributedCache方式实现的方法比较少，但是够用，可以进行扩展
-- 分布式 Redis 缓存
-- 分布式内存缓存
-- 分布式 SQL Server 缓存
-- 分布式 NCache 缓存
-- 分布式 Azure CosmosDB 缓存
+所谓的缓存，就是将程序或系统经常要调用的对象存在内存中，使其使用时可以快速调用，不必再去创建新的重复的实例。这样做可以减少系统开销，提高系统效率。
 
+## 缓存类型
 
-#### 配置文件如下
-```json
-   "Redis": {
-    "Enabled": false, // 是否启用 Redis 缓存
-    "Instance": "Simple",
-    "ConnectionString": "127.0.0.1:6379,password=123456,DefaultDatabase=6"
-  }
+- 内存缓存IMemoryCache：也就是创建一个静态内存区域，将数据存储进去，例如我们B/S架构的将数据存储在Application中或者存储在一个静态Map中
+- 本地内存缓存：就是把数据缓存在本机的内存中
+- 分布式缓存机制：可能存在跨进程，跨域访问缓存数据。对于分布式的缓存，此时因为缓存的数据是放在缓存服务器中的，或者说，此时应用程序需要跨进程的去访问分布式缓存服务器。
+- Redis 缓存
+- 内存缓存
+- SQL Server 缓存
+- NCache 缓存
+- Azure CosmosDB 缓存
+
+### 内存中的缓存
+
+使用
+
 ```
-
-
-#### 注册缓存服务
-
-::: details  AddCacheSetup
-
-```csharp
-builder.Services.AddCacheSetup();
-```
-进行中间件注册
-
-``` csharp
-public static class CacheSetup
-{ 
-    public static IServiceCollection AddCacheSetup(this IServiceCollection services)
-    {
-        // 根据情况，启用 Redis 或 DistributedMemoryCache
-        if (AppSettings.Redis.Enabled)
-        {
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = AppSettings.Redis.ConnectionString;
-                options.InstanceName = AppSettings.Redis.Instance;
-            });
-        }
-        else
-        {
-            services.AddDistributedMemoryCache();
-        }
-        //更多的缓存实现方式
-        
-
-        //
-        var cache = services.BuildServiceProvider().GetService<IDistributedCache>();
-        if (cache != null) CacheHelper.Configure(cache);
-        return services;
-    }
-
-}
-```
-:::
-#### CacheHelper 缓存帮助类
-
-::: details  CacheHelper
-
-```csharp
-/// <summary>
-/// 缓存帮助类
-/// </summary>
-public static class CacheHelper
+public class HomeController : Controller
 {
-    private static IDistributedCache? _cache;
+    private IMemoryCache _cache;
 
- 
-    private static IDistributedCache Cache
+    public HomeController(IMemoryCache memoryCache)
     {
-        get
-        {
-            if (_cache == null) throw new NullReferenceException(nameof(Cache));
-            return _cache;
-        }
-    }
-
-    public const string KeySetCacheKey = "key_set";
-
-    public static void Configure(IDistributedCache? cache)
-    {
-        if (_cache != null)
-        {
-            throw new Exception($"{nameof(Cache)}不可修改！");
-        }
-        _cache = cache ?? throw new ArgumentNullException(nameof(cache));
-    }
-
-    #region 缓存操作方法
-
-    /// <summary>
-    /// 异步获取缓存
-    /// </summary>
-    /// <param name="key"></param>
-    /// <returns></returns>
-    public static async Task<string?> GetAsync(string key)
-    {
-        var data = await Cache.GetAsync(key);
-        return data != null ? Encoding.Unicode.GetString(data) : null;
-    }
-
-
-    /// <summary>
-    /// 异步获取缓存
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="key"></param>
-    /// <returns></returns>
-    public static async Task<T?> GetObjectAsync<T>(string key)
-    {
-        var data = await Cache.GetAsync(key);
-        if (data == null) return default;
-
-        var json = Encoding.UTF8.GetString(data);
-        return JsonConvert.DeserializeObject<T>(json);
-    }
-
-
-    /// <summary>
-    /// 异步设置缓存
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    /// <param name="options">各种设置，如过期时间、滑动过期时间等</param>
-    /// <returns></returns>
-    public static async Task SetAsync(string key, string value, DistributedCacheEntryOptions options=null)
-    {
-        var bytes = Encoding.Unicode.GetBytes(value);
-        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions()); 
-    }
-
-
-    /// <summary>
-    /// 异步设置缓存
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    /// <param name="options"></param>
-    /// <returns></returns>
-    public static async Task SetObjectAsync<T>(string key, T value, DistributedCacheEntryOptions options =null)
-    {
-        var json = JsonConvert.SerializeObject(value);
-        var bytes = Encoding.UTF8.GetBytes(json);
-        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions());
-         
-    }
- 
-    /// <summary>
-    /// 异步删除缓存
-    /// </summary>
-    /// <param name="key"></param>
-    /// <returns></returns>
-    public static async Task RemoveAsync(string key)
-    {
-        await Cache.RemoveAsync(key);
-
-        // 更新键集
-        var keySet = await GetObjectAsync<HashSet<string>>(KeySetCacheKey);
-        if (keySet != null && keySet.Remove(key))
-        {
-            await SetObjectAsync(KeySetCacheKey, keySet, new DistributedCacheEntryOptions());
-        }
-    }
-     
-
- 
-    #endregion
-
-
-
-    /// <summary>
-    /// 示例，无作用
-    /// </summary>
-    /// <returns></returns>
-    public static DistributedCacheEntryOptions GetDefaultCacheEntryOptions()
-    {
-        // 创建一个新的DistributedCacheEntryOptions实例
-        var options = new DistributedCacheEntryOptions();
-
-        // 设置绝对过期时间为1小时后
-        options.SetAbsoluteExpiration(TimeSpan.FromHours(1));
-
-        // 设置滑动过期时间为30分钟
-        // 滑动过期时间是指如果在此时间间隔内访问了缓存项，则过期时间将重置
-        options.SetSlidingExpiration(TimeSpan.FromMinutes(30));
-
-        // 返回配置好的缓存项选项
-        return options;
+        _cache = memoryCache;
     }
 }
 ```
-:::
 
- 
+更多内存中的缓存可查看[官方文档](https://learn.microsoft.com/zh-cn/aspnet/core/performance/caching/memory)。
 
-#### 使用示例
+### 分布式缓存
+
+分布式缓存通常由两种，一种是不跨服务器但跨应用的缓存，另外一种是跨服务器的缓存。前者一般简称分布式内存缓存，后者统称是分布式缓存。
+
+Maslus默认使用的缓存是redis缓存，可无缝切换内存缓存，
+
+Redis缓存使用的组件用的是FreeRedis: <https://github.com/2881099/FreeRedis>
+
+malus中的使用示例
 
 ```csharp
     public class WeatherForecastController : ControllerBase
@@ -239,78 +79,4 @@ public static class CacheHelper
 }
 ```
 
-### 自定义接口方式
-
-扩展比较方便，可以更好的使用第三方扩展包，更改的时候比较方便，可以支持更高级的功能
-比如说获取全部缓存，获取指定前缀的key，可以方便的使用分布式锁，等等等
-
-
-
-使用的缓存是内存缓存，redis缓存，用的是FreeRedis: https://github.com/2881099/FreeRedis
-
-#### 配置文件
-```
-{
-   "CacheConfigs": {
-   "CacheType": "Redis", // Redis OR Memory 
-   "RedisConnectionConfigs": [
-     {
-       "Host": "127.0.0.1:6379",
-       "Ssl": false,
-       "User": null,
-       "Password": "123123",
-       "Database": 4,
-       "Prefix": "zhonghai.dev:"
-     }
-   ]
- }, 
-}
-```
-
-
-
-中间件的注册
- 
-```csharp  
-
-```
-
- 
-
-
-```csharp
- public void ConfigureServices(IServiceCollection services)
- {
-     services.AddConfigurableOptions<CacheConfigsOptions>();// 注册配置选项
-    
-     var options = App.GetConfig<CacheConfigsOptions>("CacheConfigs");
-     if (options != null && options.CacheType == "Redis")
-     {
-         services.AddSingleton(op =>
-         {
-             FreeRedis.RedisClient redisClient;
-
-             if (options.RedisConnectionConfigs.Length == 1)
-             {
-                 redisClient = new FreeRedis.RedisClient(options.RedisConnectionConfigs[0]);
-             }
-             else
-             {
-                 redisClient = new FreeRedis.RedisClient(options.RedisConnectionConfigs);
-             }
-
-             redisClient.Serialize = obj => JsonConvert.SerializeObject(obj);
-             redisClient.Deserialize = (json, type) => JsonConvert.DeserializeObject(json, type);
-             //redisClient.Notice += (s, e) => Trace.WriteLine(e.Log);
-             return redisClient;
-         });
-         services.AddSingleton<ICache, RedisCache>();
-     }
-     else
-     {
-         services.AddMemoryCache();
-         services.AddSingleton<ICache, MemoryCache>();
-     }
-```
-
-
+更多内存中的分布式缓存可查看[官方文档](https://learn.microsoft.com/zh-cn/aspnet/core/performance/caching/distributed?view=aspnetcore-8.0)。

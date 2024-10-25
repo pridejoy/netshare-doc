@@ -88,3 +88,24 @@ server {
 
 #### 申请ssl的证书
 多个配置文件
+
+
+#### 配置SignalR访问
+
+```
+
+    location /hub {
+        proxy_pass http://webname ;  # 替换 http://webname 为您的实际 Web 服务地址
+
+        # 解决 Nginx 504 问题
+        # proxy_send_timeout 600; # 单位秒 默认60
+        # proxy_read_timeout 600; # 单位秒 默认60
+        # proxy_connect_timeout 600; # 单位秒 默认60
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host; 
+    }
+    
+``` 
